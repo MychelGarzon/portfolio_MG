@@ -1,0 +1,15 @@
+.homeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  .bannerBox {
+    margin-top: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }

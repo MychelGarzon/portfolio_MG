@@ -1,12 +1,40 @@
+import { useEffect } from "react";
 import { Box } from "@mui/material";
-import styles from "./banner.module.css"
+import Typed from "typed.js";
+import styles from "./banner.module.css";
 
 const Banner = () => {
-    return (
-        <Box className={styles.banner}>
-            <div>Banner</div>
-        </Box>
-    )
-}
+    useEffect(() => {
+        const element = document.querySelector(`.${styles.typed}`);
+        if (element) {
+            const options = {
+                strings: ["Designer", "Developer", "Freelancer"],
+                typeSpeed: 60,
+                backSpeed: 25,
+                backDelay: 1000,
+                startDelay: 500,
+                loop: true,
+                cursorChar: " ",
+            };
 
-export default Banner
+            const typed = new Typed(element, options);
+
+            return () => {
+                typed.destroy();
+            };
+        }
+    }, []);
+
+    return (
+        <Box className={styles.banner} style={{ backgroundColor: "black" }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <h1>I am Mychel Garzon</h1>
+                <p>
+                    <span className={styles.typed}></span>
+                </p>
+            </Box>
+        </Box>
+    );
+};
+
+export default Banner;

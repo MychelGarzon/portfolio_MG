@@ -1,3 +1,4 @@
+/* src/components/banner.module.css */
 .banner {
     display: flex;
     justify-content: center;
@@ -5,9 +6,49 @@
     flex-direction: column;
     font-family: var(--titleFontFamily);
     font-weight: 500;
-    height: 247px;
+    height: 50vh;
     width: 100%;
-    background-color: #FFF4E5;
+    background-color: #040404;
     border-radius: 5px;
     text-align: center;
+    background-size: cover; /* Ensure the image covers the whole container */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center; /* Center the image */
+
+}
+
+
+h1 {
+    margin: 0; /* Reset default margins */
+    font-size: 3rem;
+    color: aliceblue;
+}
+
+
+.typed {
+    display: inline; /* Inline to prevent unnecessary block spacing */
+    font-size: 1.2rem;
+    color: aliceblue;
+    border-right: 2px solid aliceblue; 
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 2s steps(30, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent; 
+    }
+    50% {
+        border-color: aliceblue; 
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0; 
+    }
+    to {
+        width: 100%; 
+    }
 }

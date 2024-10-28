@@ -40,17 +40,16 @@ const Header = () => {
             }}
         >
             <Toolbar sx={{ justifyContent: 'space-between' }}>
-                <Typography variant="h5">
-                    Mychel Garzon
-                </Typography>
+                <Button component={Link} to="/" color="inherit">
+                    <Typography variant="h5">Mychel Garzon</Typography>
+                </Button>
                 <div style={{ display: 'flex', gap: '20px' }}>
-                    <Button component={Link} to="/" color="inherit">
-                        <Typography variant="h6">Home</Typography>
-                    </Button>
                     <Button component={Link} to="/Projects" color="inherit">
                         <Typography variant="h6">Projects</Typography>
                     </Button>
-
+                    <Button component={Link} to="/Skills" color="inherit">
+                        <Typography variant="h6">Skills</Typography>
+                    </Button>
                 </div>
             </Toolbar>
         </AppBar>

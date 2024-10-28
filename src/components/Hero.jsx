@@ -46,7 +46,7 @@ const Hero = () => {
           variant="body1"
           component="p"
           sx={{
-            textAlign: 'left', // Align text to the left
+            textAlign: 'left',
             marginTop: '16px',
             maxWidth: '600px',
             color: '#555',

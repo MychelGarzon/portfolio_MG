@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Typed from "typed.js";
 import styles from "./banner.module.css";
 
@@ -8,7 +8,7 @@ const Banner = () => {
         const element = document.querySelector(`.${styles.typed}`);
         if (element) {
             const options = {
-                strings: ["Designer", "Developer", "Freelancer"],
+                strings: ["Full Stack Developer", "Entrepreneur", "Chef"],
                 typeSpeed: 60,
                 backSpeed: 25,
                 backDelay: 1000,
@@ -26,12 +26,15 @@ const Banner = () => {
     }, []);
 
     return (
-        <Box className={styles.banner} style={{ backgroundColor: "black" }}>
+        <Box className={styles.banner} style={{ backgroundColor: "#2C3E50" }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <h1>I am Mychel Garzon</h1>
-                <p>
+                <Typography variant="h2" component="h2" sx={{ color: "white" }}>
+                    I am Mychel Garzon
+                </Typography>
+                <Typography variant="h4" component="h4" sx={{ color: "white" }}>
                     <span className={styles.typed}></span>
-                </p>
+                </Typography>
+
             </Box>
         </Box>
     );

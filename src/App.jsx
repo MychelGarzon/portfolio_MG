@@ -5,6 +5,7 @@ import Home from './routes/Home';
 import ProjectDetail from './routes/SinglePage';
 import ProjectCards from './components/ProjectCard';
 import Projects from './routes/Projects';
+import Skills from './components/Skills';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: '/projects',
         element: <ProjectCards />
+      },
+      {
+        path: '/skills',
+        element: <Skills />
       },
       {
         path: '/projects/:projectId',

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
-import { Toolbar, Typography } from "@mui/material";
+import { Button, Toolbar, Typography } from "@mui/material";
+import { Link } from 'react-router-dom'; // Ensure you're using react-router for routing
 
 const Header = () => {
     const [visible, setVisible] = useState(true);
@@ -24,33 +24,37 @@ const Header = () => {
     useEffect(() => {
         window.addEventListener('scroll', controlHeader);
 
-        // Cleanup event listener on unmount
         return () => {
             window.removeEventListener('scroll', controlHeader);
         };
     }, [controlHeader, lastScrollY]);
 
     return (
-        <Box sx={{ flexGrow: 1, width: '100%' }}>
-            <AppBar
-                position="fixed"
-                sx={{
-                    backgroundColor: 'white',
-                    color: "black",
-                    transition: 'transform 0.3s ease',
-                    transform: visible ? 'translateY(0)' : 'translateY(-100%)' // Move out of view
-                }}
-            >
-                <Toolbar>
-                    <Typography variant="h5">
-                        Mychel Garzon
-                    </Typography>
-                </Toolbar>
-            </AppBar>
-            {/* Spacer to prevent content from hiding behind the AppBar */}
-            <Toolbar sx={{ minHeight: '64px' }} />
-        </Box>
+        <AppBar
+            position="fixed"
+            sx={{
+                backgroundColor: 'white',
+                color: 'black',
+                transition: 'transform 0.3s ease',
+                transform: visible ? 'translateY(0)' : 'translateY(-100%)',
+            }}
+        >
+            <Toolbar sx={{ justifyContent: 'space-between' }}>
+                <Typography variant="h5">
+                    Mychel Garzon
+                </Typography>
+                <div style={{ display: 'flex', gap: '20px' }}>
+                    <Button component={Link} to="/" color="inherit">
+                        <Typography variant="h6">Home</Typography>
+                    </Button>
+                    <Button component={Link} to="/Projects" color="inherit">
+                        <Typography variant="h6">Projects</Typography>
+                    </Button>
+
+                </div>
+            </Toolbar>
+        </AppBar>
     );
-}
+};
 
 export default Header;

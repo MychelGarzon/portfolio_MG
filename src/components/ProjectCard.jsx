@@ -18,6 +18,7 @@ const ProjectCards = () => {
     return (
         <Paper
             sx={{
+
                 p: 4, // Add padding to the paper
                 overflow: 'auto', // Allow scrolling if content overflows
             }}
@@ -27,8 +28,9 @@ const ProjectCards = () => {
                 variant="h2"
                 component="h2"
                 sx={{
+                    marginTop: "5rem",
                     marginBottom: 2,
-                    textAlign: 'center', // Center text horizontally
+                    textAlign: 'center',
                 }}
             >
                 Recent Projects
@@ -53,7 +55,7 @@ const ProjectCards = () => {
                                 alt={project.name}
                                 image={project.image}
                                 sx={{
-                                    margin: "auto", // Center the image horizontally
+                                    margin: "auto",
                                     height: '150px',
                                     width: '150px',
                                     objectFit: 'contain',

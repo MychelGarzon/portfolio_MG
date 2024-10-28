@@ -1,12 +1,9 @@
-// src/pages/ProjectDetail.js
-
-import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Typography, CardContent, Button, Grid, Container, Box } from '@mui/material';
 import projectsData from '../data/projects.json';
 
 const ProjectDetail = () => {
-    const { projectId } = useParams(); 
+    const { projectId } = useParams();
     const project = projectId ? projectsData.find((p) => p.id === parseInt(projectId)) : undefined;
 
     if (!project) {
@@ -14,7 +11,7 @@ const ProjectDetail = () => {
     }
 
     return (
-        <Box 
+        <Box
             sx={{
                 minHeight: '80vh',
                 display: 'flex',
@@ -31,11 +28,11 @@ const ProjectDetail = () => {
                             alt="Project"
                             src={project.image}
                             sx={{
-                                height: '400px',  
+                                height: '400px',
                                 width: '100%',
                                 objectFit: 'cover',
                                 borderRadius: '8px',
-                                boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)', 
+                                boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
                             }}
                         />
                     </Grid>

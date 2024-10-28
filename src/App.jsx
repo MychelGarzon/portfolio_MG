@@ -4,6 +4,7 @@ import Root from './layout/Root';
 import Home from './routes/Home';
 import ProjectDetail from './routes/SinglePage';
 import ProjectCards from './components/ProjectCard';
+import Projects from './routes/Projects';
 
 const router = createBrowserRouter([
   {
@@ -15,8 +16,12 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path: '/projects', // Route to the projects page
-        element: <ProjectCards /> // Show the list of projects
+        path: '/projects',
+        element: <Projects />
+      },
+      {
+        path: '/projects',
+        element: <ProjectCards />
       },
       {
         path: '/projects/:projectId',

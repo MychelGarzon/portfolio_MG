@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { Typography, CardContent, Button, Grid, Container, Box } from '@mui/material';
-import projectsData from '../data/projects.json';
+import projectsData from '../data/projectsData';
 
 const ProjectDetail = () => {
     const { projectId } = useParams();

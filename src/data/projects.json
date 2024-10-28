@@ -2,7 +2,7 @@
     {
       "id": 1,
       "name": "Au2Mate",
-      "image": "/src/assets/projects-images/logo.svg",
+      "image": "assets/projects-images/logo.svg",
       "description": "Website created for selling and buying cars in Tasmania - Australia",
       "link": "https://au2mate.au/"
     },

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Grid, Card, CardMedia, CardContent, Typography, Button, Paper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import projectsData from '../data/projects.json';
+import projectsData from '../data/projectsData'; // Import the new JS data file
 
 const ProjectCards = () => {
     const [projects, setProjects] = useState([]);

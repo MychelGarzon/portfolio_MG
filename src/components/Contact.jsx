@@ -78,17 +78,87 @@ const ContactPage = () => {
                             <ListItem>
                                 <Button
                                     href="https://www.facebook.com/"
-                                    target="_blank" // Opens the link in a new tab
-                                    rel="noopener noreferrer" // Security feature for external links
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     sx={{
-                                        textDecoration: "none",
-                                        "&:hover": {
-                                            backgroundColor: "transparent", // Keeps the background color unchanged
-                                            boxShadow: "none", // Removes any shadow effect on hover
+                                        backgroundColor: 'transparent', // Ensures no background initially
+                                        '&:hover': {
+                                            backgroundColor: 'transparent', // Prevents background change on hover
+                                        },
+                                        textDecoration: 'none',
+                                        position: 'relative', // Required for the pseudo-element positioning
+                                        '&:hover::after': {
+                                            transform: 'scaleX(1)', // Scales the underline to full width on hover
+                                        },
+                                        '::after': {
+                                            textDecoration: 'none',
+                                            content: '""',
+                                            position: 'absolute',
+                                            left: 0,
+                                            bottom: -2, // Adjusts the underline distance from text
+                                            width: '100%',
+                                            height: '2px', // Thickness of the underline
+                                            backgroundColor: 'black',
+                                            transform: 'scaleX(0)', // Initially hidden
+                                            transformOrigin: 'left',
+                                            transition: 'transform 0.3s ease', // Smooth transition
                                         },
                                     }}
                                 >
-                                    <Typography variant="h6" color={"black"}>
+                                    <Typography
+                                        variant="h6"
+                                        color="black"
+                                        sx={{
+                                            display: 'flex',
+                                            alignItems: 'center', // Aligns icon with text
+                                            gap: 0.5, // Adds some space between text and icon
+                                            textDecoration: 'none',
+                                        }}
+                                    >
+                                        Github <ArrowOutwardIcon fontSize="large" />
+                                    </Typography>
+                                </Button>
+                            </ListItem>
+                            <ListItem>
+                                <Button
+                                    href="https://www.facebook.com/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    sx={{
+                                        backgroundColor: 'transparent', // Ensures no background initially
+                                        '&:hover': {
+                                            backgroundColor: 'transparent', // Prevents background change on hover
+                                        },
+                                        textDecoration: 'none',
+                                        position: 'relative', // Required for the pseudo-element positioning
+                                        '&:hover::after': {
+                                            transform: 'scaleX(1)', // Scales the underline to full width on hover
+                                        },
+                                        '::after': {
+                                            textDecoration: 'none',
+                                            content: '""',
+                                            position: 'absolute',
+                                            left: 0,
+                                            bottom: -2, // Adjusts the underline distance from text
+                                            width: '100%',
+                                            height: '2px', // Thickness of the underline
+                                            backgroundColor: 'black',
+                                            transform: 'scaleX(0)', // Initially hidden
+                                            transformOrigin: 'left',
+                                            transition: 'transform 0.3s ease', // Smooth transition
+                                        },
+                                    }}
+                                >
+                                    <Typography
+                                        variant="h6"
+                                        color="black"
+                                        sx={{
+                                            display: 'flex',
+                                            alignItems: 'center', // Aligns icon with text
+                                            gap: 0.5, // Adds some space between text and icon
+                                            textDecoration: 'none',
+                                        }}
+                                    >
                                         Facebook <ArrowOutwardIcon fontSize="large" />
                                     </Typography>
                                 </Button>
@@ -96,35 +166,43 @@ const ContactPage = () => {
                             <ListItem>
                                 <Button
                                     href="https://www.facebook.com/"
-                                    target="_blank" // Opens the link in a new tab
-                                    rel="noopener noreferrer" // Security feature for external links
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     sx={{
-                                        textDecoration: "none",
-                                        "&:hover": {
-                                            backgroundColor: "transparent", // Keeps the background color unchanged
-                                            boxShadow: "none", // Removes any shadow effect on hover
+                                        backgroundColor: 'transparent', // Ensures no background initially
+                                        '&:hover': {
+                                            backgroundColor: 'transparent', // Prevents background change on hover
+                                        },
+                                        textDecoration: 'none',
+                                        position: 'relative', // Required for the pseudo-element positioning
+                                        '&:hover::after': {
+                                            transform: 'scaleX(1)', // Scales the underline to full width on hover
+                                        },
+                                        '::after': {
+                                            textDecoration: 'none',
+                                            content: '""',
+                                            position: 'absolute',
+                                            left: 0,
+                                            bottom: -2, // Adjusts the underline distance from text
+                                            width: '100%',
+                                            height: '2px', // Thickness of the underline
+                                            backgroundColor: 'black',
+                                            transform: 'scaleX(0)', // Initially hidden
+                                            transformOrigin: 'left',
+                                            transition: 'transform 0.3s ease', // Smooth transition
                                         },
                                     }}
                                 >
-                                    <Typography variant="h6" color={"black"}>
-                                        GitHub <ArrowOutwardIcon fontSize="large" />
-                                    </Typography>
-                                </Button>
-                            </ListItem>
-                            <ListItem>
-                                <Button
-                                    href="https://www.facebook.com/"
-                                    target="_blank" // Opens the link in a new tab
-                                    rel="noopener noreferrer" // Security feature for external links
-                                    sx={{
-                                        textDecoration: "none",
-                                        "&:hover": {
-                                            backgroundColor: "transparent", // Keeps the background color unchanged
-                                            boxShadow: "none", // Removes any shadow effect on hover
-                                        },
-                                    }}
-                                >
-                                    <Typography variant="h6" color={"black"}>
+                                    <Typography
+                                        variant="h6"
+                                        color="black"
+                                        sx={{
+                                            display: 'flex',
+                                            alignItems: 'center', // Aligns icon with text
+                                            gap: 0.5, // Adds some space between text and icon
+                                            textDecoration: 'none',
+                                        }}
+                                    >
                                         LinkedIn <ArrowOutwardIcon fontSize="large" />
                                     </Typography>
                                 </Button>
@@ -162,9 +240,44 @@ const ContactPage = () => {
                                 onChange={(e) => setMessage(e.target.value)}
                                 inputProps={{ maxLength: 5000 }}
                             />
-                            <Button type="submit">
-                                <Typography variant="h6" color={"black"}>
-                                    Submit Message <ArrowOutwardIcon />
+                            <Button
+                                type="submit"
+                                sx={{
+                                    backgroundColor: 'transparent', // Ensures no background initially
+                                    '&:hover': {
+                                        backgroundColor: 'transparent', // Prevents background change on hover
+                                    },
+                                    textDecoration: 'none',
+                                    position: 'relative', // Required for the pseudo-element positioning
+                                    '&:hover::after': {
+                                        transform: 'scaleX(1)', // Scales the underline to full width on hover
+                                    },
+                                    '::after': {
+                                        textDecoration: 'none',
+                                        content: '""',
+                                        position: 'absolute',
+                                        left: 0,
+                                        bottom: -2, // Adjusts the underline distance from text
+                                        width: '100%',
+                                        height: '2px', // Thickness of the underline
+                                        backgroundColor: 'black',
+                                        transform: 'scaleX(0)', // Initially hidden
+                                        transformOrigin: 'left',
+                                        transition: 'transform 0.3s ease', // Smooth transition
+                                    },
+                                }}
+                            >
+                                <Typography
+                                    variant="h6"
+                                    color="black"
+                                    sx={{
+                                        display: 'flex',
+                                        alignItems: 'center', // Aligns icon with text
+                                        gap: 0.5, // Adds some space between text and icon
+                                        textDecoration: 'none',
+                                    }}
+                                >
+                                    SUBMIT MESSAGE <ArrowOutwardIcon fontSize="large" />
                                 </Typography>
                             </Button>
                         </form>

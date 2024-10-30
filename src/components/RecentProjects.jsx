@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Grid, Card, CardContent, CardMedia, Typography, Button, Box, Divider } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import projectsData from '../data/projectsData';
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 const RecentProjects = () => {
     const [projects, setProjects] = useState([]);
@@ -129,22 +130,54 @@ const RecentProjects = () => {
                                     >
                                         More Info
                                     </Button>
-                                    <Typography
-                                        component="a"
-                                        href={project.link}
+                                    <Button
+                                        href="https://www.facebook.com/"
                                         target="_blank"
+                                        rel="noopener noreferrer"
                                         sx={{
-                                            color: '#2c3e50',
-                                            textDecoration: 'none',
+                                            backgroundColor: 'transparent', // Ensures no background initially
                                             '&:hover': {
-                                                textDecoration: 'underline',
+                                                backgroundColor: 'transparent', // Prevents background change on hover
                                             },
-                                            flex: 1, // Allow link to take remaining space
-                                            textAlign: 'right', // Align text to the right
+                                            textDecoration: 'none',
+                                            position: 'relative', // Required for the pseudo-element positioning
+                                            '&:hover::after': {
+                                                transform: 'scaleX(1)', // Scales the underline to full width on hover
+                                            },
+                                            '::after': {
+                                                textDecoration: 'none',
+                                                content: '""',
+                                                position: 'absolute',
+                                                left: 0,
+                                                bottom: -2, // Adjusts the underline distance from text
+                                                width: '100%',
+                                                height: '1px', // Thickness of the underline
+                                                backgroundColor: '#2c3e50',
+                                                transform: 'scaleX(0)', // Initially hidden
+                                                transformOrigin: 'left',
+                                                transition: 'transform 0.3s ease', // Smooth transition
+                                            },
                                         }}
                                     >
-                                        Visit the page ➔
-                                    </Typography>
+                                        <Typography
+                                            component="a"
+                                            href={project.link}
+                                            target="_blank"
+                                            sx={{
+                                                display: 'flex',
+                                                alignItems: 'center', // Aligns icon with text
+                                                gap: 0.5, // Adds some space between text and icon
+                                                textDecoration: 'none',
+                                                color: '#2c3e50',
+                                                flex: 1, // Allow link to take remaining space
+                                                textAlign: 'right', // Align text to the right
+
+                                            }}
+                                        >
+                                            Visit the page
+                                            <ArrowOutwardIcon fontSize="large" />
+                                        </Typography>
+                                    </Button>
                                 </Box>
 
 

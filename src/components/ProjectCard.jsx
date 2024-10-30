@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Grid, Card, CardContent, CardMedia, Typography, Button, Box, Paper, Divider } from '@mui/material';
+import { Grid, Card, CardContent, CardMedia, Typography, Button, Box, Divider } from '@mui/material';
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { useNavigate } from 'react-router-dom';
 import projectsData from '../data/projectsData';
 
@@ -18,14 +19,7 @@ const ProjectCards = () => {
     const [hoveredCardId, setHoveredCardId] = useState(null);
 
     return (
-        <Paper
-            sx={{
-                p: 4,
-                overflow: 'auto',
-
-            }}
-            className={`basis-0 grow `}
-        >
+        < >
             <Typography
                 variant="h2"
                 component="h2"
@@ -34,13 +28,12 @@ const ProjectCards = () => {
                     marginBottom: 2,
                     textAlign: 'center',
                     color: "black"
-
                 }}
             >
                 Recent Projects
             </Typography>
 
-            <Grid container spacing={2} sx={{ marginBottom: "3rem", justifyContent: "center" }}>
+            <Grid container spacing={2} sx={{ marginBottom: "3rem" }}>
                 {projects.map((project) => (
                     <Grid item xs={12} sm={6} md={6} key={project.id} sx={{ display: 'flex', justifyContent: 'center' }}>
                         <Card
@@ -71,7 +64,6 @@ const ProjectCards = () => {
                                     }}
                                 />
                             </Box>
-
 
                             {/* Card Content */}
                             <CardContent sx={{ flexGrow: 1 }}>
@@ -117,12 +109,8 @@ const ProjectCards = () => {
                                         </Grid>
                                     </Box>
                                 )}
-                                <Box
-                                    mt={4}
-                                    display="flex"
-                                    alignItems="center"
-                                    justifyContent="space-between"
-                                >
+
+                                <Box mt={4} display="flex" alignItems="center" justifyContent="space-between">
                                     <Button
                                         variant="outlined"
                                         sx={{
@@ -138,31 +126,56 @@ const ProjectCards = () => {
                                     >
                                         More Info
                                     </Button>
-                                    <Typography
-                                        component="a"
-                                        href={project.link}
+
+                                    <Button
+                                        href="https://www.facebook.com/"
                                         target="_blank"
+                                        rel="noopener noreferrer"
                                         sx={{
-                                            color: '#2c3e50',
-                                            textDecoration: 'none',
+                                            backgroundColor: 'transparent',
                                             '&:hover': {
-                                                textDecoration: 'underline',
+                                                backgroundColor: 'transparent',
                                             },
-                                            flex: 1, // Allow link to take remaining space
-                                            textAlign: 'right', // Align text to the right
+                                            textDecoration: 'none',
+                                            position: 'relative',
+                                            '&:hover::after': {
+                                                transform: 'scaleX(1)',
+                                            },
+                                            '::after': {
+                                                textDecoration: 'none',
+                                                content: '""',
+                                                position: 'absolute',
+                                                left: 0,
+                                                bottom: -2,
+                                                width: '100%',
+                                                height: '1px',
+                                                backgroundColor: '#2c3e50',
+                                                transform: 'scaleX(0)',
+                                                transformOrigin: 'left',
+                                                transition: 'transform 0.3s ease',
+                                            },
                                         }}
                                     >
-                                        Visit the page ➔
-                                    </Typography>
+                                        <Typography
+                                            sx={{
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: 0.5,
+                                                textDecoration: 'none',
+                                                color: '#2c3e50',
+                                            }}
+                                        >
+                                            Visit the page
+                                            <ArrowOutwardIcon fontSize="large" />
+                                        </Typography>
+                                    </Button>
                                 </Box>
-
-
                             </CardContent>
                         </Card>
                     </Grid>
                 ))}
-            </Grid >
-        </Paper>
+            </Grid>
+        </>
     );
 };
 

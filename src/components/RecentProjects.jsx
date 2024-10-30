@@ -123,7 +123,7 @@ const RecentProjects = () => {
                                                 borderColor: '#536872',
                                                 backgroundColor: 'rgba(0, 0, 0, 0.1)',
                                             },
-                                            marginRight: '1rem', // Add margin for spacing
+                                            marginRight: '1rem',
                                         }}
                                         onClick={() => handleNavigate(project.id)}
                                     >

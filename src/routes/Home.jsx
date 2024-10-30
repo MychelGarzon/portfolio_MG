@@ -1,15 +1,35 @@
 import Banner from "../components/banner/Banner";
 import { Box, Divider } from "@mui/material";
-import styles from "./home.module.css";
 import Hero from "../components/Hero";
 import Skills from "../components/Skills";
 import RecentProjects from "../components/RecentProjects";
+import Contact from "../components/Contact";
 
 const Home = () => {
   return (
-    <Box className={styles.container}>
-      <Banner />
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
+      }}
+    >
+      <Box
+        sx={{
+          marginTop: '64px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+        }}
+      >
+        <Banner />
+      </Box>
+
       <Hero />
+
       <Divider
         sx={{
           bgcolor: 'rgba(128, 128, 128, 0.5)',
@@ -19,7 +39,9 @@ const Home = () => {
           width: '80%',
         }}
       />
+
       <Skills />
+
       <Divider
         sx={{
           bgcolor: 'rgba(128, 128, 128, 0.5)',
@@ -29,7 +51,17 @@ const Home = () => {
           width: '80%',
         }}
       />
+
       <RecentProjects />
+      <Divider
+        sx={{
+          bgcolor: 'rgba(128, 128, 128, 0.5)',
+          height: 1,
+          marginY: 2,
+          marginX: '10%',
+          width: '80%',
+        }}
+      />
       <Box
         sx={{
           textAlign: 'center',
@@ -37,11 +69,10 @@ const Home = () => {
           paddingX: 2,
         }}
       >
-
       </Box>
-
+      <Contact />
     </Box>
   );
-}
+};
 
 export default Home;

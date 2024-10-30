@@ -22,7 +22,6 @@ const ProjectCards = () => {
             sx={{
                 p: 4,
                 overflow: 'auto',
-                backgroundColor: "#536872",
 
             }}
             className={`basis-0 grow `}
@@ -34,31 +33,32 @@ const ProjectCards = () => {
                     marginTop: "5rem",
                     marginBottom: 2,
                     textAlign: 'center',
-                    backgroundColor: "#536872",
-                    color: "white"
+                    color: "black"
 
                 }}
             >
                 Recent Projects
             </Typography>
 
-            <Grid container spacing={6} justifyContent="center" sx={{ backgroundColor: '#536872', marginBottom: "3rem" }}>
+            <Grid container spacing={2} sx={{ marginBottom: "3rem", justifyContent: "center" }}>
                 {projects.map((project) => (
-                    <Grid item xs={12} sm={6} md={6} key={project.id}>
+                    <Grid item xs={12} sm={6} md={6} key={project.id} sx={{ display: 'flex', justifyContent: 'center' }}>
                         <Card
                             sx={{
                                 display: 'flex',
                                 flexDirection: 'column',
                                 height: '100%',
+                                width: '70%',
                                 boxShadow: 3,
                                 transition: 'transform 0.3s',
-                                transform: hoveredCardId === project.id ? 'scale(1.05)' : 'scale(1)', // Conditional scaling
+                                transform: hoveredCardId === project.id ? 'scale(1.05)' : 'scale(1)',
+                                position: 'relative',
                                 background: "#e1e1df",
-
                             }}
-                            onMouseEnter={() => setHoveredCardId(project.id)} // Set hovered card ID on mouse enter
-                            onMouseLeave={() => setHoveredCardId(null)} // Clear hovered card ID on mouse leave
+                            onMouseEnter={() => setHoveredCardId(project.id)}
+                            onMouseLeave={() => setHoveredCardId(null)}
                         >
+                            {/* Card Media */}
                             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
                                 <CardMedia
                                     component="img"
@@ -67,11 +67,13 @@ const ProjectCards = () => {
                                     alt={project.name}
                                     sx={{
                                         transition: 'transform 0.3s',
-                                        '&:hover': { transform: 'scale(1.05)' },
                                         margin: "auto",
                                     }}
                                 />
                             </Box>
+
+
+                            {/* Card Content */}
                             <CardContent sx={{ flexGrow: 1 }}>
                                 <Grid container alignItems="center" justifyContent="center" sx={{ mb: 2 }}>
                                     <Typography variant="body2" color="textSecondary">
@@ -88,7 +90,39 @@ const ProjectCards = () => {
                                 <Typography variant="body2" color="textSecondary">
                                     {project.description}
                                 </Typography>
-                                <Box mt={2} display="flex" alignItems="center" justifyContent="space-between">
+
+                                {/* Technologies Section */}
+                                {project.technologies && (
+                                    <Box mt={2}>
+                                        <Typography variant="body2" color="textSecondary" sx={{ mb: 2 }}>
+                                            Technologies Used
+                                        </Typography>
+                                        <Grid container spacing={1}>
+                                            {project.technologies.map((tech) => (
+                                                <Grid item key={tech.id}>
+                                                    <Box
+                                                        sx={{
+                                                            padding: '4px 8px',
+                                                            backgroundColor: '#f5f5f5',
+                                                            borderRadius: '4px',
+                                                            fontSize: '0.8rem',
+                                                            color: '#2c3e50',
+                                                            display: 'inline-block',
+                                                        }}
+                                                    >
+                                                        {tech.name}
+                                                    </Box>
+                                                </Grid>
+                                            ))}
+                                        </Grid>
+                                    </Box>
+                                )}
+                                <Box
+                                    mt={4}
+                                    display="flex"
+                                    alignItems="center"
+                                    justifyContent="space-between"
+                                >
                                     <Button
                                         variant="outlined"
                                         sx={{
@@ -98,6 +132,7 @@ const ProjectCards = () => {
                                                 borderColor: '#536872',
                                                 backgroundColor: 'rgba(0, 0, 0, 0.1)',
                                             },
+                                            marginRight: '1rem',
                                         }}
                                         onClick={() => handleNavigate(project.id)}
                                     >
@@ -112,17 +147,21 @@ const ProjectCards = () => {
                                             textDecoration: 'none',
                                             '&:hover': {
                                                 textDecoration: 'underline',
-                                            }
+                                            },
+                                            flex: 1, // Allow link to take remaining space
+                                            textAlign: 'right', // Align text to the right
                                         }}
                                     >
                                         Visit the page ➔
                                     </Typography>
                                 </Box>
+
+
                             </CardContent>
                         </Card>
                     </Grid>
                 ))}
-            </Grid>
+            </Grid >
         </Paper>
     );
 };

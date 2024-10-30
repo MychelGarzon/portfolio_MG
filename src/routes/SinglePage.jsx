@@ -40,13 +40,44 @@ const ProjectDetail = () => {
                     {/* Description Section */}
                     <Grid item xs={12} md={6}>
                         <CardContent>
-                            <Typography variant="h4" component="h2" sx={{ marginBottom: '20px' }}>
+                            <Typography variant="h1" component="h2" sx={{ marginBottom: '20px' }}>
                                 {project.name}
                             </Typography>
+
                             <Typography variant="body1" color="text.secondary" sx={{ marginBottom: '20px' }}>
-                                {project.description}
+                                {project.specificDescription}
                             </Typography>
-                            <Button variant="contained" color="primary" onClick={() => window.history.back()}>
+                            <Grid container spacing={1}>
+                                {project.technologies.map((tech) => (
+                                    <Grid item key={tech.id}>
+                                        <Box
+                                            sx={{
+                                                padding: '4px 8px',
+                                                backgroundColor: '#f5f5f5',
+                                                borderRadius: '4px',
+                                                fontSize: '0.8rem',
+                                                color: '#2c3e50',
+                                                display: 'inline-block',
+                                            }}
+                                        >
+                                            {tech.name}
+                                        </Box>
+                                    </Grid>
+                                ))}
+                            </Grid>
+
+                            <Button
+                                className='marginTop2rem'
+                                variant="outlined"
+                                sx={{
+                                    color: 'black',
+                                    borderColor: 'black',
+                                    '&:hover': {
+                                        borderColor: '#536872',
+                                        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                                    },
+                                    marginRight: '1rem',
+                                }} onClick={() => window.history.back()}>
                                 Back to Projects
                             </Button>
                         </CardContent>

@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { Typography, CardContent, Button, Grid, Container, Box } from '@mui/material';
 import projectsData from '../data/projectsData';
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+
 import technologiesData from '../data/technologies'; // Import technologies data
 
 const ProjectDetail = () => {
@@ -72,26 +74,73 @@ const ProjectDetail = () => {
                                     );
                                 })}
                             </Grid>
-
-                            <Button
-                                className='marginTop2rem'
-                                variant="outlined"
-                                sx={{
-                                    color: 'black',
-                                    borderColor: 'black',
-                                    '&:hover': {
-                                        borderColor: '#536872',
-                                        backgroundColor: 'rgba(0, 0, 0, 0.1)',
-                                    },
-                                    marginRight: '1rem',
-                                }} onClick={() => window.history.back()}>
-                                Back to Projects
-                            </Button>
+                            <Box>
+                                <Button
+                                    className='marginTop2rem'
+                                    variant="outlined"
+                                    sx={{
+                                        margin: '2rem 0',
+                                        color: 'black',
+                                        borderColor: 'black',
+                                        '&:hover': {
+                                            borderColor: '#536872',
+                                            backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                                        },
+                                        marginRight: '1rem',
+                                    }} onClick={() => window.history.back()}>
+                                    Back to Projects
+                                </Button>
+                                <Button
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    sx={{
+                                        backgroundColor: 'transparent',
+                                        '&:hover': {
+                                            backgroundColor: 'transparent',
+                                        },
+                                        textDecoration: 'none',
+                                        position: 'relative',
+                                        '&:hover::after': {
+                                            transform: 'scaleX(1)',
+                                        },
+                                        '::after': {
+                                            textDecoration: 'none',
+                                            content: '""',
+                                            position: 'absolute',
+                                            left: 0,
+                                            bottom: -2,
+                                            width: '100%',
+                                            height: '1px',
+                                            backgroundColor: '#2c3e50',
+                                            transform: 'scaleX(0)',
+                                            transformOrigin: 'left',
+                                            transition: 'transform 0.3s ease',
+                                        },
+                                    }}
+                                >
+                                    <Typography
+                                        component="a"
+                                        sx={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: 0.5,
+                                            textDecoration: 'none',
+                                            color: '#2c3e50',
+                                            flex: 1,
+                                            textAlign: 'right',
+                                        }}
+                                    >
+                                        Visit the page
+                                        <ArrowOutwardIcon fontSize="large" />
+                                    </Typography>
+                                </Button>
+                            </Box>
                         </CardContent>
                     </Grid>
                 </Grid>
             </Container>
-        </Box>
+        </Box >
     );
 };
 

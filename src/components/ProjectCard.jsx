@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import projectsData from '../data/projectsData';
 import technologiesData from '../data/technologies';
 
+
 const ProjectCards = () => {
     const [projects, setProjects] = useState([]);
     const navigate = useNavigate();
@@ -133,7 +134,7 @@ const ProjectCards = () => {
                                     </Button>
 
                                     <Button
-                                        href="https://www.facebook.com/"
+                                        href={project.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         sx={{
@@ -162,12 +163,15 @@ const ProjectCards = () => {
                                         }}
                                     >
                                         <Typography
+                                            component="a"
                                             sx={{
                                                 display: 'flex',
                                                 alignItems: 'center',
                                                 gap: 0.5,
                                                 textDecoration: 'none',
                                                 color: '#2c3e50',
+                                                flex: 1,
+                                                textAlign: 'right',
                                             }}
                                         >
                                             Visit the page

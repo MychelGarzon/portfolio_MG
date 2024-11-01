@@ -1,7 +1,7 @@
 import logo from '../assets/projects-images/logo.jpg';
 import chanterelleImage from '../assets/projects-images/mushroom.png';
 import alcorteImage from '../assets/projects-images/alcorte.png';
-import earthImage from '../assets/projects-images/earth.svg';
+import earthImage from '../assets/projects-images/world.jpg';
 import kwImage from '../assets/projects-images/kw.png';
 import shopping from '../assets/projects-images/shopping.jpg';
 

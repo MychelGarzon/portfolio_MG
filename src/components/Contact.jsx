@@ -182,7 +182,7 @@ const ContactPage = () => {
                         <form onSubmit={handleSubmit}>
                             <CustomTextField
                                 fullWidth
-                                label="Full name"
+                                label="name"
                                 variant="standard"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}

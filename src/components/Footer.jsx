@@ -41,7 +41,7 @@ const Footer = () => {
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <IconButton
                         component="a"
-                        href="https://www.linkedin.com/in/your-profile"
+                        href="https://www.linkedin.com/in/mychel-garzon-trujillo/"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="LinkedIn"
@@ -59,7 +59,7 @@ const Footer = () => {
                     </IconButton>
                     <IconButton
                         component="a"
-                        href="https://github.com/your-profile"
+                        href="https://github.com/MychelGarzon"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="GitHub"

@@ -69,8 +69,8 @@ const ContactPage = () => {
                             Get in touch
                         </Typography>
                         <Typography variant="body1" sx={{ marginBottom: "24px" }}>
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit mattis
-                            faucibus odio feugiat arc dolor.
+                            I’d love to hear from you! Whether you have a project in mind, want to brainstorm ideas, or just wish to collaborate, don’t hesitate to reach out. Together, we can create something amazing!
+
                         </Typography>
 
                         {/* List of social media buttons */}

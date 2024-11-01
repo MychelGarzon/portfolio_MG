@@ -9,10 +9,8 @@ const Footer = () => {
             <Box className={styles.container}>
                 <Box className={styles.contactInfo}>
                     <Typography variant="h6" className={styles.footerTitle}>
-                        Contact
                     </Typography>
                     <Typography className={styles.footerSubTitle}>
-                        WA: +571234567890
                     </Typography>
                     <Typography className={styles.footerSubTitle}>
                     </Typography>

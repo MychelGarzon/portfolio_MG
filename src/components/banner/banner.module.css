@@ -8,7 +8,6 @@
     height: 80vh;
     width: 100%;
     background-color: #040404;
-    border-radius: 5px;
     text-align: center;
     background-size: cover; /* Ensure the image covers the whole container */
     background-repeat: no-repeat; /* Prevent the image from repeating */

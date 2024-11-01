@@ -32,6 +32,7 @@ const Hero = () => {
 
       {/* Right Column for Text */}
       <Grid
+        margin={2}
         item
         xs={12}
         md={6}

@@ -72,7 +72,11 @@ const ContactPage = () => {
         e.preventDefault();
 
         if (name && email && message) {
-            const templateParams = { name, email, message };
+            const templateParams = {
+                name: name,
+                email: email,
+                message: message
+            };
 
             emailjs.send(
                 import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -182,7 +186,7 @@ const ContactPage = () => {
                                 variant="standard"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                inputProps={{ maxLength: 256 }}
+                                inputProps={{ maxLength: 256, name: 'name' }} // Set name attribute for emailjs
                             />
                             <CustomTextField
                                 fullWidth
@@ -192,7 +196,7 @@ const ContactPage = () => {
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                inputProps={{ maxLength: 256 }}
+                                inputProps={{ maxLength: 256, name: 'email' }} // Set name attribute for emailjs
                             />
                             <CustomTextField
                                 fullWidth
@@ -202,7 +206,7 @@ const ContactPage = () => {
                                 variant="standard"
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
-                                inputProps={{ maxLength: 5000 }}
+                                inputProps={{ maxLength: 5000, name: 'message' }} // Set name attribute for emailjs
                             />
                             <StyledButton type="submit">
                                 <Typography

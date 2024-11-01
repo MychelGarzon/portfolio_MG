@@ -22,7 +22,7 @@ const Skills = () => {
                     As a Junior Full Stack Developer, I thrive on the challenge of blending creativity and logic, building seamless user experiences while mastering the intricate backend mechanics, and I am eager to keep learning and pushing my limits in this dynamic field.
                 </Typography>
             </Grid>
-            <Grid container spacing={4} style={{ padding: '20px' }}>
+            <Grid container spacing={4} style={{ padding: '50px' }}>
                 {skillsData.map((info, index) => (
                     <Grid item xs={12} sm={6} md={3} key={index}>
                         {/* Inline Infobox Component */}

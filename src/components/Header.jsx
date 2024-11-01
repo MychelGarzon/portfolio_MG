@@ -47,15 +47,20 @@ const Header = () => {
                         Mychel Garzon</Typography>
                 </Button>
                 <div style={{ display: 'flex', gap: '20px' }}>
-                    <Button component={Link} to="/" color="inherit" sx={{
+                    <Button component={Link} to="/Projects" color="inherit" sx={{
                         '&:hover': { backgroundColor: 'transparent' }
                     }}>
                         <Typography variant="h6">Projects</Typography>
                     </Button>
-                    <Button component={Link} to="/" color="inherit" sx={{
+                    <Button component={Link} to="/skills" color="inherit" sx={{
                         '&:hover': { backgroundColor: 'transparent' }
                     }}>
                         <Typography variant="h6">Skills</Typography>
+                    </Button>
+                    <Button component={Link} to="/contact" color="inherit" sx={{
+                        '&:hover': { backgroundColor: 'transparent' }
+                    }}>
+                        <Typography variant="h6">Contact</Typography>
                     </Button>
                 </div>
             </Toolbar>

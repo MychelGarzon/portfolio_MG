@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { Typography, CardContent, Button, Grid, Container, Box } from '@mui/material';
 import projectsData from '../data/projectsData';
+import technologiesData from '../data/technologies'; // Import technologies data
 
 const ProjectDetail = () => {
     const { projectId } = useParams();
@@ -47,23 +48,29 @@ const ProjectDetail = () => {
                             <Typography variant="body1" color="text.secondary" sx={{ marginBottom: '20px' }}>
                                 {project.specificDescription}
                             </Typography>
+
                             <Grid container spacing={1}>
-                                {project.technologies.map((tech) => (
-                                    <Grid item key={tech.id}>
-                                        <Box
-                                            sx={{
-                                                padding: '4px 8px',
-                                                backgroundColor: '#f5f5f5',
-                                                borderRadius: '4px',
-                                                fontSize: '0.8rem',
-                                                color: '#2c3e50',
-                                                display: 'inline-block',
-                                            }}
-                                        >
-                                            {tech.name}
-                                        </Box>
-                                    </Grid>
-                                ))}
+                                {project.technologies.map((techId) => {
+                                    const technology = technologiesData.find((t) => t.id === techId);
+                                    return (
+                                        technology && (
+                                            <Grid item key={techId}>
+                                                <Box
+                                                    sx={{
+                                                        padding: '4px 8px',
+                                                        backgroundColor: '#f5f5f5',
+                                                        borderRadius: '4px',
+                                                        fontSize: '0.8rem',
+                                                        color: '#2c3e50',
+                                                        display: 'inline-block',
+                                                    }}
+                                                >
+                                                    {technology.name}
+                                                </Box>
+                                            </Grid>
+                                        )
+                                    );
+                                })}
                             </Grid>
 
                             <Button

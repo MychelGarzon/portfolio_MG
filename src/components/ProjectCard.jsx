@@ -3,6 +3,7 @@ import { Grid, Card, CardContent, CardMedia, Typography, Button, Box, Divider } 
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { useNavigate } from 'react-router-dom';
 import projectsData from '../data/projectsData';
+import technologiesData from '../data/technologies';
 
 const ProjectCards = () => {
     const [projects, setProjects] = useState([]);
@@ -19,7 +20,7 @@ const ProjectCards = () => {
     const [hoveredCardId, setHoveredCardId] = useState(null);
 
     return (
-        < >
+        <>
             <Typography
                 variant="h2"
                 component="h2"
@@ -90,22 +91,26 @@ const ProjectCards = () => {
                                             Technologies Used
                                         </Typography>
                                         <Grid container spacing={1}>
-                                            {project.technologies.map((tech) => (
-                                                <Grid item key={tech.id}>
-                                                    <Box
-                                                        sx={{
-                                                            padding: '4px 8px',
-                                                            backgroundColor: '#f5f5f5',
-                                                            borderRadius: '4px',
-                                                            fontSize: '0.8rem',
-                                                            color: '#2c3e50',
-                                                            display: 'inline-block',
-                                                        }}
-                                                    >
-                                                        {tech.name}
-                                                    </Box>
-                                                </Grid>
-                                            ))}
+                                            {project.technologies.map((techId) => {
+                                                // Find technology data based on techId
+                                                const tech = technologiesData.find((technology) => technology.id === techId);
+                                                return tech ? (
+                                                    <Grid item key={tech.id}>
+                                                        <Box
+                                                            sx={{
+                                                                padding: '4px 8px',
+                                                                backgroundColor: '#f5f5f5',
+                                                                borderRadius: '4px',
+                                                                fontSize: '0.8rem',
+                                                                color: '#2c3e50',
+                                                                display: 'inline-block',
+                                                            }}
+                                                        >
+                                                            {tech.name}
+                                                        </Box>
+                                                    </Grid>
+                                                ) : null;
+                                            })}
                                         </Grid>
                                     </Box>
                                 )}

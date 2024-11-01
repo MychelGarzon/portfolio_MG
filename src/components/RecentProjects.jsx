@@ -3,6 +3,7 @@ import { Grid, Card, CardContent, CardMedia, Typography, Button, Box, Divider } 
 import { useNavigate } from 'react-router-dom';
 import projectsData from '../data/projectsData';
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import technologiesData from '../data/technologies';
 
 const RecentProjects = () => {
     const [projects, setProjects] = useState([]);
@@ -64,7 +65,6 @@ const RecentProjects = () => {
                                 />
                             </Box>
 
-
                             {/* Card Content */}
                             <CardContent sx={{ flexGrow: 1 }}>
                                 <Grid container alignItems="center" justifyContent="center" sx={{ mb: 2 }}>
@@ -90,22 +90,25 @@ const RecentProjects = () => {
                                             Technologies Used
                                         </Typography>
                                         <Grid container spacing={1}>
-                                            {project.technologies.map((tech) => (
-                                                <Grid item key={tech.id}>
-                                                    <Box
-                                                        sx={{
-                                                            padding: '4px 8px',
-                                                            backgroundColor: '#f5f5f5',
-                                                            borderRadius: '4px',
-                                                            fontSize: '0.8rem',
-                                                            color: '#2c3e50',
-                                                            display: 'inline-block',
-                                                        }}
-                                                    >
-                                                        {tech.name}
-                                                    </Box>
-                                                </Grid>
-                                            ))}
+                                            {project.technologies.map((techId) => {
+                                                const tech = technologiesData.find(t => t.id === techId);
+                                                return tech ? (
+                                                    <Grid item key={tech.id}>
+                                                        <Box
+                                                            sx={{
+                                                                padding: '4px 8px',
+                                                                backgroundColor: '#f5f5f5',
+                                                                borderRadius: '4px',
+                                                                fontSize: '0.8rem',
+                                                                color: '#2c3e50',
+                                                                display: 'inline-block',
+                                                            }}
+                                                        >
+                                                            {tech.name}
+                                                        </Box>
+                                                    </Grid>
+                                                ) : null;
+                                            })}
                                         </Grid>
                                     </Box>
                                 )}
@@ -131,47 +134,44 @@ const RecentProjects = () => {
                                         More Info
                                     </Button>
                                     <Button
-                                        href="https://www.facebook.com/"
+                                        href={project.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         sx={{
-                                            backgroundColor: 'transparent', // Ensures no background initially
+                                            backgroundColor: 'transparent',
                                             '&:hover': {
-                                                backgroundColor: 'transparent', // Prevents background change on hover
+                                                backgroundColor: 'transparent',
                                             },
                                             textDecoration: 'none',
-                                            position: 'relative', // Required for the pseudo-element positioning
+                                            position: 'relative',
                                             '&:hover::after': {
-                                                transform: 'scaleX(1)', // Scales the underline to full width on hover
+                                                transform: 'scaleX(1)',
                                             },
                                             '::after': {
                                                 textDecoration: 'none',
                                                 content: '""',
                                                 position: 'absolute',
                                                 left: 0,
-                                                bottom: -2, // Adjusts the underline distance from text
+                                                bottom: -2,
                                                 width: '100%',
-                                                height: '1px', // Thickness of the underline
+                                                height: '1px',
                                                 backgroundColor: '#2c3e50',
-                                                transform: 'scaleX(0)', // Initially hidden
+                                                transform: 'scaleX(0)',
                                                 transformOrigin: 'left',
-                                                transition: 'transform 0.3s ease', // Smooth transition
+                                                transition: 'transform 0.3s ease',
                                             },
                                         }}
                                     >
                                         <Typography
                                             component="a"
-                                            href={project.link}
-                                            target="_blank"
                                             sx={{
                                                 display: 'flex',
-                                                alignItems: 'center', // Aligns icon with text
-                                                gap: 0.5, // Adds some space between text and icon
+                                                alignItems: 'center',
+                                                gap: 0.5,
                                                 textDecoration: 'none',
                                                 color: '#2c3e50',
-                                                flex: 1, // Allow link to take remaining space
-                                                textAlign: 'right', // Align text to the right
-
+                                                flex: 1,
+                                                textAlign: 'right',
                                             }}
                                         >
                                             Visit the page
@@ -179,13 +179,11 @@ const RecentProjects = () => {
                                         </Typography>
                                     </Button>
                                 </Box>
-
-
                             </CardContent>
                         </Card>
                     </Grid>
                 ))}
-            </Grid >
+            </Grid>
         </>
     );
 };

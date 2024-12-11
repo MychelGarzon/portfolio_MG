@@ -53,7 +53,7 @@ const Hero = () => {
             color: '#555',
           }}
         >
-          I’m a Full Stack Developer with a focus on React, set to graduate from Business College Helsinki by the end of 2024. I have over a year of experience in building web applications and a strong interest in quality assurance, using tools like Cypress and Jest. Transitioning from a career in the HoReCa industry, where I successfully managed teams and businesses.
+          I’m a Full Stack Developer with a focus on React, and I graduated from Business College Helsinki. I have over a year of experience in building web applications and a strong interest in quality assurance, using tools like Cypress and Jest. Transitioning from a career in the HoReCa industry, where I successfully managed teams and businesses.
         </Typography>
       </Grid>
     </Grid>

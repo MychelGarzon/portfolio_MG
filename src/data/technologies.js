@@ -35,6 +35,11 @@ const technologiesData = [
 
     // Version Control
     { id: 21, name: "GitHub" },
+
+    { id: 22, name: "Docker" },
+    { id: 23, name: "Vercel" },
+    { id: 24, name: "Python" },
+    { id: 25, name: "Next.js" },
 ];
 
 export default technologiesData;

@@ -4,6 +4,8 @@ import alcorteImage from '../assets/projects-images/alcorte.png';
 import earthImage from '../assets/projects-images/world.jpg';
 import kwImage from '../assets/projects-images/kw.png';
 import shopping from '../assets/projects-images/shopping.jpg';
+import calculator from '../assets/projects-images/calculator.png';
+import password from '../assets/projects-images/password.png';
 
 const projectsData = [
     {
@@ -151,6 +153,55 @@ const projectsData = [
             20, // Figma
             21, // GitHub
         ]
+    },
+    {
+        id: 7,
+        name: "Calculator Delivery",
+        image: calculator,
+        description: "This project is a solution for the Delivery Order Price Calculator (DOPC).",
+        link: "https://calculator-delivery.netlify.app/",
+        specificDescription: "This project is a solution for the Delivery Order Price Calculator (DOPC). It allows users to calculate the price of a delivery order based on the distance and weight of the order. The application provides a platform for users to input the distance and weight of the order, and get the calculated price. The application also provides information about the distance and weight of the order. The application is designed to be user-friendly and intuitive, with a clean and modern interface that makes it easy to calculate the price of a delivery order.",
+        technologies: [
+            1,  // React
+            2,  // TypeScript
+            3,  // Redux
+            4,  // Material-UI
+            16, // Tailwind
+            5,  // Node.js
+            11, // GitHub Actions
+            15, // Cypress
+            18, // Jira
+            19, // Scrum
+            20, // Figma
+            21, // GitHub
+        ]
+    
+    },
+    {
+        id: 8,
+        name: "Password Generator ",
+        image: password,
+        description: "This project is a secure password generator.",
+        link: "https://secure-password-generator-app.vercel.app/",
+        specificDescription: "This project is a secure password generator. It allows users to generate random passwords based on user-defined criteria such as password length, character types (uppercase, lowercase, numbers, and symbols), and the inclusion of symbols. The generated passwords are designed to be secure and meet the specified criteria. The application is designed to be user-friendly and intuitive, with a clean and modern interface that makes it easy to generate and use secure passwords.",
+        technologies: [
+            24,
+            2,  // TypeScript
+            3,  // Redux
+            4,  // Material-UI
+            16, // Tailwind
+            5,  // Node.js
+            11, // GitHub Actions
+            15, // Cypress
+            18, // Jira
+            19, // Scrum
+            20, // Figma
+            23, // Vercel
+            25, // Next.js
+            
+            
+        ]
+    
     }
 ];
 

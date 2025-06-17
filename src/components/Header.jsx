@@ -98,7 +98,7 @@ const Header = () => {
                                 <CloseIcon />
                             </IconButton>
                         </div>
-                        <MenuItem onClick={handleMenuClose} component={Link} to="/Projects">
+                        <MenuItem onClick={handleMenuClose} component={Link} to="/projects">
                             Projects
                         </MenuItem>
                         <MenuItem onClick={handleMenuClose} component={Link} to="/skills">

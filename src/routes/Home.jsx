@@ -70,6 +70,7 @@ const Home = () => {
         }}
       >
       </Box>
+
       <Contact />
     </Box>
   );

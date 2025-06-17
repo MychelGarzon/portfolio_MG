@@ -54,7 +54,7 @@ const Header = () => {
 
                 <div style={{ display: 'flex', gap: '20px' }}>
                     {/* Links for larger screens */}
-                    <Button component={Link} to="/Projects" color="inherit" sx={{
+                    <Button component={Link} to="/projects" color="inherit" sx={{
                         display: { xs: 'none', md: 'inline-flex' },
                         '&:hover': { backgroundColor: 'transparent' }
                     }}>
@@ -66,6 +66,7 @@ const Header = () => {
                     }}>
                         <Typography variant="h6">Skills</Typography>
                     </Button>
+
                     <Button component={Link} to="/contact" color="inherit" sx={{
                         display: { xs: 'none', md: 'inline-flex' },
                         '&:hover': { backgroundColor: 'transparent' }

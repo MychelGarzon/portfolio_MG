@@ -54,6 +54,12 @@ const Header = () => {
 
                 <div style={{ display: 'flex', gap: '20px' }}>
                     {/* Links for larger screens */}
+                    <Button component={Link} to="/workflows" color="inherit" sx={{
+                        display: { xs: 'none', md: 'inline-flex' },
+                        '&:hover': { backgroundColor: 'transparent' }
+                    }}>
+                        <Typography variant="h6">WorkFlows</Typography>
+                    </Button>
                     <Button component={Link} to="/projects" color="inherit" sx={{
                         display: { xs: 'none', md: 'inline-flex' },
                         '&:hover': { backgroundColor: 'transparent' }
@@ -98,6 +104,9 @@ const Header = () => {
                                 <CloseIcon />
                             </IconButton>
                         </div>
+                        <MenuItem onClick={handleMenuClose} component={Link} to="/workflows">
+                            WorkFlows
+                        </MenuItem>
                         <MenuItem onClick={handleMenuClose} component={Link} to="/projects">
                             Projects
                         </MenuItem>

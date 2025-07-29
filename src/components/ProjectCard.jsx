@@ -134,6 +134,7 @@ const ProjectCards = () => {
                                     </Button>
 
                                     <Button
+                                        component="a"
                                         href={project.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
@@ -144,6 +145,12 @@ const ProjectCards = () => {
                                             },
                                             textDecoration: 'none',
                                             position: 'relative',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: 0.5,
+                                            color: '#2c3e50',
+                                            flex: 1,
+                                            textAlign: 'right',
                                             '&:hover::after': {
                                                 transform: 'scaleX(1)',
                                             },
@@ -162,21 +169,8 @@ const ProjectCards = () => {
                                             },
                                         }}
                                     >
-                                        <Typography
-                                            component="a"
-                                            sx={{
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                gap: 0.5,
-                                                textDecoration: 'none',
-                                                color: '#2c3e50',
-                                                flex: 1,
-                                                textAlign: 'right',
-                                            }}
-                                        >
-                                            Visit the page
-                                            <ArrowOutwardIcon fontSize="large" />
-                                        </Typography>
+                                        Visit the page
+                                        <ArrowOutwardIcon fontSize="large" />
                                     </Button>
                                 </Box>
                             </CardContent>

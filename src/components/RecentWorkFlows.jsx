@@ -112,6 +112,7 @@ const RecentWorkflows = () => {
                                 {/* Visit Link */}
                                 <Box mt={4} display="flex" justifyContent="flex-end">
                                     <Button
+                                        component="a"
                                         href={wf.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
@@ -122,6 +123,12 @@ const RecentWorkflows = () => {
                                             },
                                             textDecoration: 'none',
                                             position: 'relative',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: 0.5,
+                                            color: '#2c3e50',
+                                            flex: 1,
+                                            textAlign: 'right',
                                             '&:hover::after': {
                                                 transform: 'scaleX(1)',
                                             },
@@ -139,21 +146,8 @@ const RecentWorkflows = () => {
                                             },
                                         }}
                                     >
-                                        <Typography
-                                            component="a"
-                                            sx={{
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                gap: 0.5,
-                                                textDecoration: 'none',
-                                                color: '#2c3e50',
-                                                flex: 1,
-                                                textAlign: 'right',
-                                            }}
-                                        >
-                                            View Workflow
-                                            <ArrowOutwardIcon fontSize="large" />
-                                        </Typography>
+                                        View Workflow
+                                        <ArrowOutwardIcon fontSize="large" />
                                     </Button>
                                 </Box>
                             </CardContent>

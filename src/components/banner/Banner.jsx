@@ -8,7 +8,7 @@ const Banner = () => {
         const element = document.querySelector(`.${styles.typed}`);
         if (element) {
             const options = {
-                strings: ["Full Stack Developer", "Entrepreneur", "Chef"],
+                strings: ["Full Stack Developer", "Automation Specialist", "Entrepreneur", "Head-Chef"],
                 typeSpeed: 60,
                 backSpeed: 25,
                 backDelay: 1000,

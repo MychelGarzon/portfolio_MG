@@ -19,7 +19,7 @@ const Skills = () => {
                         color: '#555',
                     }}
                 >
-                    As a Junior Full Stack Developer, I thrive on the challenge of blending creativity and logic, building seamless user experiences while mastering the intricate backend mechanics, and I am eager to keep learning and pushing my limits in this dynamic field.
+                    As a Full Stack Developer, I thrive on the challenge of blending creativity and logic, building seamless user experiences while mastering the intricate backend mechanics, and I am eager to keep learning and pushing my limits in this dynamic field.
                 </Typography>
             </Grid>
             <Grid container spacing={4} style={{ padding: '50px' }}>

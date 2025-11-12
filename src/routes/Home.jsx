@@ -34,7 +34,7 @@ const Home = () => {
         sx={{
           bgcolor: 'rgba(128, 128, 128, 0.5)',
           height: 1,
-          marginY: 2,
+          marginY: 8,
           marginX: '10%',
           width: '80%',
         }}

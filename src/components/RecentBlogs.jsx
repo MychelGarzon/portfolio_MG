@@ -19,7 +19,7 @@ const RecentBlogs = () => {
                 Latest Articles
             </Typography>
 
-            <BlogCards limit={3} />
+            <BlogCards limit={2} />
 
             <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 4, marginBottom: 4 }}>
                 <Button

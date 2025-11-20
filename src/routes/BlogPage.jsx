@@ -1,4 +1,3 @@
-// src/routes/BlogPage.jsx
 import { useState } from 'react';
 import {
     Container,
@@ -22,7 +21,8 @@ const BlogPage = () => {
 
     return (
         <Container maxWidth="xl" sx={{ marginTop: '8rem', marginBottom: '4rem' }}>
-            <Box textAlign="center" mb={6}>
+            {/* Page Header */}
+            <Box textAlign="center" mb={8}>
                 <Typography
                     variant="h2"
                     component="h1"
@@ -36,8 +36,8 @@ const BlogPage = () => {
                 >
                     Latest Insights
                 </Typography>
-                <Typography variant="body1" sx={{ color: '#555', maxWidth: '600px', mx: 'auto' }}>
-                    Sharing my thoughts on Full Stack Development, AI Automation, and the tech industry.
+                <Typography variant="body1" sx={{ color: '#666', maxWidth: '600px', mx: 'auto', fontSize: '1.1rem' }}>
+                    Exploring the intersection of AI, Automation, and Full Stack Development.
                 </Typography>
             </Box>
 
@@ -50,77 +50,140 @@ const BlogPage = () => {
                                 flexDirection: 'column',
                                 height: '100%',
                                 width: '100%',
-                                maxWidth: '400px',
-                                boxShadow: hoveredCardId === blog.id ? 6 : 2,
-                                transition: 'transform 0.3s, box-shadow 0.3s',
+                                maxWidth: '380px', // Matches the narrow look of the reference
+                                borderRadius: '24px', // Larger border radius like the reference
+                                boxShadow: hoveredCardId === blog.id
+                                    ? '0 20px 40px rgba(0,0,0,0.1)'
+                                    : '0 4px 20px rgba(0,0,0,0.05)',
+                                transition: 'all 0.3s ease-in-out',
                                 transform: hoveredCardId === blog.id ? 'translateY(-8px)' : 'translateY(0)',
                                 position: 'relative',
                                 background: "#fff",
-                                borderRadius: '16px',
-                                overflow: 'hidden'
+                                overflow: 'hidden',
+                                border: '1px solid rgba(0,0,0,0.05)'
                             }}
                             onMouseEnter={() => setHoveredCardId(blog.id)}
                             onMouseLeave={() => setHoveredCardId(null)}
                         >
+                            {/* Image Section */}
                             <CardMedia
                                 component="img"
-                                height="200"
+                                // Fixed height and cover ensures it fits perfectly
+                                sx={{
+                                    height: 220,
+                                    width: '100%',
+                                    objectFit: 'cover',
+                                    borderBottom: '1px solid rgba(0,0,0,0.05)'
+                                }}
                                 image={blog.image}
                                 alt={blog.title}
-                                sx={{ objectFit: 'cover' }}
                             />
 
-                            <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', p: 3 }}>
-                                <Box sx={{ mb: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <Typography variant="caption" sx={{ color: '#666', fontWeight: 500 }}>
-                                        {blog.date}
-                                    </Typography>
-                                    <Typography variant="caption" sx={{ color: '#666' }}>
-                                        {blog.readTime}
-                                    </Typography>
+                            <CardContent sx={{
+                                flexGrow: 1,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                p: 3,
+                                paddingTop: 2.5
+                            }}>
+                                {/* Meta Data Row (Date & Read Time) */}
+                                <Box sx={{
+                                    mb: 2,
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    fontSize: '0.85rem',
+                                    color: '#666',
+                                    fontWeight: 500
+                                }}>
+                                    <span>{blog.date}</span>
+                                    <span>{blog.readTime}</span>
                                 </Box>
 
-                                <Typography variant="h5" component="h2" sx={{ mb: 1.5, fontWeight: 'bold', lineHeight: 1.3 }}>
+                                {/* Title */}
+                                <Typography
+                                    variant="h5"
+                                    component="h2"
+                                    sx={{
+                                        mb: 1.5,
+                                        fontWeight: 800, // Extra bold like reference
+                                        lineHeight: 1.2,
+                                        fontSize: '1.5rem',
+                                        color: '#1a1a1a'
+                                    }}
+                                >
                                     {blog.title}
                                 </Typography>
 
-                                <Typography variant="body2" color="text.secondary" sx={{ mb: 3, flexGrow: 1 }}>
+                                {/* Excerpt */}
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        mb: 3,
+                                        flexGrow: 1,
+                                        color: '#555',
+                                        lineHeight: 1.6,
+                                        fontSize: '0.95rem'
+                                    }}
+                                >
                                     {blog.excerpt}
                                 </Typography>
 
-                                <Box sx={{ mb: 3 }}>
+                                {/* Tags - Styled like the reference image (Light Blue Pills) */}
+                                <Box sx={{ mb: 3, display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                                     {blog.tags.map((tag, index) => (
                                         <Chip
                                             key={index}
                                             label={tag}
                                             size="small"
                                             sx={{
-                                                mr: 0.5,
-                                                mb: 0.5,
-                                                backgroundColor: '#e3f2fd',
-                                                color: '#1976d2',
+                                                backgroundColor: '#e3f2fd', // Very light blue background
+                                                color: '#1976d2',           // Darker blue text
+                                                fontWeight: 600,
                                                 fontSize: '0.75rem',
-                                                fontWeight: 500
+                                                borderRadius: '8px',        // Slightly squared corners
+                                                height: '24px',
+                                                '& .MuiChip-label': {
+                                                    paddingLeft: '8px',
+                                                    paddingRight: '8px'
+                                                }
                                             }}
                                         />
                                     ))}
                                 </Box>
 
-                                <Divider sx={{ my: 1 }} />
+                                <Divider sx={{ opacity: 0.6 }} />
 
-                                <Button
-                                    onClick={() => navigate(`/blog/${blog.id}`)}
-                                    sx={{
-                                        textTransform: 'none',
-                                        color: '#2c3e50',
-                                        justifyContent: 'flex-end',
-                                        mt: 1,
-                                        '&:hover': { backgroundColor: 'transparent', color: '#1976d2' }
-                                    }}
-                                    endIcon={<ArrowOutwardIcon />}
-                                >
-                                    Read Article
-                                </Button>
+                                {/* Footer Link */}
+                                <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
+                                    <Button
+                                        onClick={() => navigate(`/blog/${blog.id}`)}
+                                        disableRipple
+                                        sx={{
+                                            textTransform: 'none',
+                                            color: '#333',
+                                            fontWeight: 600,
+                                            fontSize: '0.95rem',
+                                            padding: 0,
+                                            '&:hover': {
+                                                backgroundColor: 'transparent',
+                                                color: '#000',
+                                                '& .MuiSvgIcon-root': {
+                                                    transform: 'translate(2px, -2px)'
+                                                }
+                                            }
+                                        }}
+                                    >
+                                        Read Article
+                                        <ArrowOutwardIcon
+                                            sx={{
+                                                ml: 0.5,
+                                                fontSize: '1rem',
+                                                transition: 'transform 0.2s ease'
+                                            }}
+                                        />
+                                    </Button>
+                                </Box>
                             </CardContent>
                         </Card>
                     </Grid>

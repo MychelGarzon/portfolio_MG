@@ -1,6 +1,17 @@
+// src/components/BlogCards.jsx
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Card, CardContent, CardMedia, Typography, Button, Box, Chip, Divider } from '@mui/material';
+import {
+    Grid,
+    Card,
+    CardContent,
+    CardMedia,
+    Typography,
+    Button,
+    Box,
+    Chip,
+    Divider
+} from '@mui/material';
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { useNavigate } from 'react-router-dom';
 import blogData from '../data/blogData';
@@ -32,72 +43,150 @@ const BlogCards = ({ limit }) => {
                             flexDirection: 'column',
                             height: '100%',
                             width: '100%',
-                            maxWidth: '400px',
-                            boxShadow: 3,
-                            transition: 'transform 0.3s',
-                            transform: hoveredCardId === blog.id ? 'scale(1.05)' : 'scale(1)',
+                            maxWidth: '380px', // Narrower card for the modern look
+                            borderRadius: '24px', // Larger rounded corners
+                            boxShadow: hoveredCardId === blog.id
+                                ? '0 20px 40px rgba(0,0,0,0.1)'
+                                : '0 4px 20px rgba(0,0,0,0.05)',
+                            transition: 'all 0.3s ease-in-out',
+                            transform: hoveredCardId === blog.id ? 'translateY(-8px)' : 'translateY(0)',
                             position: 'relative',
-                            background: "#e1e1df",
+                            background: "#fff",
+                            overflow: 'hidden',
+                            border: '1px solid rgba(0,0,0,0.05)'
                         }}
                         onMouseEnter={() => setHoveredCardId(blog.id)}
                         onMouseLeave={() => setHoveredCardId(null)}
                     >
-                        <Box sx={{ height: '200px', overflow: 'hidden' }}>
-                            <CardMedia
-                                component="img"
-                                height="100%"
-                                image={blog.image}
-                                alt={blog.title}
-                                sx={{
-                                    transition: 'transform 0.3s',
-                                    '&:hover': { transform: 'scale(1.1)' }
-                                }}
-                            />
-                        </Box>
+                        {/* Image Section - Applied directly to CardMedia to fix fitting issues */}
+                        <CardMedia
+                            component="img"
+                            image={blog.image}
+                            alt={blog.title}
+                            loading="lazy"
+                            sx={{
+                                display: 'block',
+                                width: '100%',
+                                height: 220,
+                                objectFit: 'cover',
+                                objectPosition: 'center',
+                                borderTopLeftRadius: '24px',
+                                borderTopRightRadius: '24px',
+                            }}
+                        />
 
-                        <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-                            <Box sx={{ mb: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <Typography variant="caption" color="textSecondary">
+
+                        <CardContent sx={{
+                            flexGrow: 1,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            p: 3,
+                            paddingTop: 2.5
+                        }}>
+                            {/* Meta Data Row */}
+                            <Box sx={{
+                                mb: 2,
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'center',
+                                fontSize: '0.85rem',
+                                color: '#666',
+                                fontWeight: 500
+                            }}>
+                                <Typography variant="caption" sx={{ fontSize: 'inherit' }}>
                                     {blog.date}
                                 </Typography>
-                                <Typography variant="caption" color="textSecondary">
+                                <Typography variant="caption" sx={{ fontSize: 'inherit' }}>
                                     {blog.readTime}
                                 </Typography>
                             </Box>
 
-                            <Typography variant="h6" component="h3" sx={{ mb: 1, fontWeight: 'bold', lineHeight: 1.2 }}>
+                            {/* Title */}
+                            <Typography
+                                variant="h5"
+                                component="h3"
+                                sx={{
+                                    mb: 1.5,
+                                    fontWeight: 800,
+                                    lineHeight: 1.2,
+                                    fontSize: '1.5rem',
+                                    color: '#1a1a1a'
+                                }}
+                            >
                                 {blog.title}
                             </Typography>
 
-                            <Typography variant="body2" color="textSecondary" sx={{ mb: 2, flexGrow: 1 }}>
+                            {/* Excerpt */}
+                            <Typography
+                                variant="body2"
+                                sx={{
+                                    mb: 3,
+                                    flexGrow: 1,
+                                    color: '#555',
+                                    lineHeight: 1.6,
+                                    fontSize: '0.95rem'
+                                }}
+                            >
                                 {blog.excerpt}
                             </Typography>
 
-                            <Box sx={{ mb: 2 }}>
+                            {/* Tags - Modern Pill Style */}
+                            <Box sx={{ mb: 3, display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                                 {blog.tags.map((tag, index) => (
                                     <Chip
                                         key={index}
                                         label={tag}
                                         size="small"
-                                        sx={{ mr: 0.5, mb: 0.5, backgroundColor: '#f5f5f5', fontSize: '0.7rem' }}
+                                        sx={{
+                                            backgroundColor: '#e3f2fd', // Light blue background
+                                            color: '#1976d2',           // Dark blue text
+                                            fontWeight: 600,
+                                            fontSize: '0.75rem',
+                                            borderRadius: '8px',
+                                            height: '24px',
+                                            '& .MuiChip-label': {
+                                                paddingLeft: '8px',
+                                                paddingRight: '8px'
+                                            }
+                                        }}
                                     />
                                 ))}
                             </Box>
 
-                            <Divider sx={{ my: 1 }} />
+                            <Divider sx={{ opacity: 0.6 }} />
 
-                            <Button
-                                onClick={() => handleNavigate(blog.id)}
-                                sx={{
-                                    textTransform: 'none',
-                                    color: '#2c3e50',
-                                    justifyContent: 'flex-end',
-                                    '&:hover': { backgroundColor: 'transparent', textDecoration: 'underline' }
-                                }}
-                                endIcon={<ArrowOutwardIcon />}
-                            >
-                                Read Article
-                            </Button>
+                            {/* Read Article Link */}
+                            <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
+                                <Button
+                                    onClick={() => handleNavigate(blog.id)}
+                                    disableRipple
+                                    sx={{
+                                        textTransform: 'none',
+                                        color: '#333',
+                                        fontWeight: 600,
+                                        fontSize: '0.95rem',
+                                        padding: 0,
+                                        '&:hover': {
+                                            backgroundColor: 'transparent',
+                                            color: '#000',
+                                            textDecoration: 'none',
+                                            '& .MuiSvgIcon-root': {
+                                                transform: 'translate(2px, -2px)'
+                                            }
+                                        }
+                                    }}
+                                    endIcon={
+                                        <ArrowOutwardIcon
+                                            sx={{
+                                                fontSize: '1rem',
+                                                transition: 'transform 0.2s ease'
+                                            }}
+                                        />
+                                    }
+                                >
+                                    Read Article
+                                </Button>
+                            </Box>
                         </CardContent>
                     </Card>
                 </Grid>
@@ -106,8 +195,6 @@ const BlogCards = ({ limit }) => {
     );
 };
 
-export default BlogCards;
-
 BlogCards.propTypes = {
     limit: PropTypes.number,
 };
@@ -115,3 +202,5 @@ BlogCards.propTypes = {
 BlogCards.defaultProps = {
     limit: undefined,
 };
+
+export default BlogCards;

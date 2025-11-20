@@ -7,6 +7,8 @@ import Projects from './routes/Projects';
 import ContactPage from './routes/ContactPage';
 import SkillsPage from './routes/SkillsPage';
 import WorkflowsPage from './routes/WorkflowsPage';
+import BlogPage from './routes/BlogPage';
+import BlogPost from './routes/BlogPost';
 
 // Error component for router errors
 const ErrorPage = () => {
@@ -61,6 +63,16 @@ const router = createBrowserRouter([
       {
         path: '/workflows',
         element: <WorkflowsPage />,
+        errorElement: <ErrorPage />
+      },
+      {
+        path: '/blog',
+        element: <BlogPage />,
+        errorElement: <ErrorPage />
+      },
+      {
+        path: '/blog/:blogId',
+        element: <BlogPost />,
         errorElement: <ErrorPage />
       }
     ]

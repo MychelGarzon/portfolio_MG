@@ -4,6 +4,7 @@ import Hero from "../components/Hero";
 import Skills from "../components/Skills";
 import RecentProjects from "../components/RecentProjects";
 import Contact from "../components/Contact";
+import RecentBlogs from "../components/RecentBlogs";
 
 const Home = () => {
   return (
@@ -71,6 +72,19 @@ const Home = () => {
       >
       </Box>
 
+
+
+      <RecentBlogs />
+
+      <Divider
+        sx={{
+          bgcolor: 'rgba(128, 128, 128, 0.5)',
+          height: 1,
+          marginY: 2,
+          marginX: '10%',
+          width: '80%',
+        }}
+      />
       <Contact />
     </Box>
   );

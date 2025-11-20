@@ -73,6 +73,13 @@ const Header = () => {
                     }}>
                         <Typography variant="h6">Projects</Typography>
                     </Button>
+
+                    <Button component={Link} to="/blog" color="inherit" sx={{
+                        display: { xs: 'none', md: 'inline-flex' },
+                        '&:hover': { backgroundColor: 'transparent' }
+                    }}>
+                        <Typography variant="h6">Blog</Typography>
+                    </Button>
                     <Button component={Link} to="/skills" color="inherit" sx={{
                         display: { xs: 'none', md: 'inline-flex' },
                         '&:hover': { backgroundColor: 'transparent' }
@@ -113,6 +120,9 @@ const Header = () => {
                         </div>
                         <MenuItem onClick={handleMenuClose} component={Link} to="/workflows">
                             WorkFlows
+                        </MenuItem>
+                        <MenuItem onClick={handleMenuClose} component={Link} to="/blog">
+                            Blog
                         </MenuItem>
                         <MenuItem onClick={handleMenuClose} component={Link} to="/projects">
                             Projects

@@ -16,18 +16,20 @@ import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { useNavigate } from 'react-router-dom';
 import blogData from '../data/blogData';
 
-const BlogCards = ({ limit }) => {
+const BlogCards = () => {
     const [blogs, setBlogs] = useState([]);
     const [hoveredCardId, setHoveredCardId] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (limit) {
-            setBlogs(blogData.slice(0, limit));
-        } else {
-            setBlogs(blogData);
-        }
-    }, [limit]);
+        // Define the IDs you want to show
+        const targetIds = [2, 1];
+
+        // Filter blogData to only include items where the ID is in targetIds
+        const specificBlogs = blogData.filter((blog) => targetIds.includes(blog.id));
+
+        setBlogs(specificBlogs);
+    }, []);
 
     const handleNavigate = (blogId) => {
         navigate(`/blog/${blogId}`);
@@ -43,8 +45,8 @@ const BlogCards = ({ limit }) => {
                             flexDirection: 'column',
                             height: '100%',
                             width: '100%',
-                            maxWidth: '380px', // Narrower card for the modern look
-                            borderRadius: '24px', // Larger rounded corners
+                            maxWidth: '380px',
+                            borderRadius: '24px',
                             boxShadow: hoveredCardId === blog.id
                                 ? '0 20px 40px rgba(0,0,0,0.1)'
                                 : '0 4px 20px rgba(0,0,0,0.05)',
@@ -58,7 +60,6 @@ const BlogCards = ({ limit }) => {
                         onMouseEnter={() => setHoveredCardId(blog.id)}
                         onMouseLeave={() => setHoveredCardId(null)}
                     >
-                        {/* Image Section - Applied directly to CardMedia to fix fitting issues */}
                         <CardMedia
                             component="img"
                             image={blog.image}
@@ -75,7 +76,6 @@ const BlogCards = ({ limit }) => {
                             }}
                         />
 
-
                         <CardContent sx={{
                             flexGrow: 1,
                             display: 'flex',
@@ -83,7 +83,6 @@ const BlogCards = ({ limit }) => {
                             p: 3,
                             paddingTop: 2.5
                         }}>
-                            {/* Meta Data Row */}
                             <Box sx={{
                                 mb: 2,
                                 display: 'flex',
@@ -101,7 +100,6 @@ const BlogCards = ({ limit }) => {
                                 </Typography>
                             </Box>
 
-                            {/* Title */}
                             <Typography
                                 variant="h5"
                                 component="h3"
@@ -116,7 +114,6 @@ const BlogCards = ({ limit }) => {
                                 {blog.title}
                             </Typography>
 
-                            {/* Excerpt */}
                             <Typography
                                 variant="body2"
                                 sx={{
@@ -130,7 +127,6 @@ const BlogCards = ({ limit }) => {
                                 {blog.excerpt}
                             </Typography>
 
-                            {/* Tags - Modern Pill Style */}
                             <Box sx={{ mb: 3, display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                                 {blog.tags.map((tag, index) => (
                                     <Chip
@@ -138,8 +134,8 @@ const BlogCards = ({ limit }) => {
                                         label={tag}
                                         size="small"
                                         sx={{
-                                            backgroundColor: '#e3f2fd', // Light blue background
-                                            color: '#1976d2',           // Dark blue text
+                                            backgroundColor: '#e3f2fd',
+                                            color: '#1976d2',
                                             fontWeight: 600,
                                             fontSize: '0.75rem',
                                             borderRadius: '8px',
@@ -155,7 +151,6 @@ const BlogCards = ({ limit }) => {
 
                             <Divider sx={{ opacity: 0.6 }} />
 
-                            {/* Read Article Link */}
                             <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
                                 <Button
                                     onClick={() => handleNavigate(blog.id)}
@@ -195,12 +190,8 @@ const BlogCards = ({ limit }) => {
     );
 };
 
-BlogCards.propTypes = {
-    limit: PropTypes.number,
-};
-
-BlogCards.defaultProps = {
-    limit: undefined,
-};
-
 export default BlogCards;
+
+BlogCards.propTypes = {
+    limit: PropTypes.number.isRequired,
+};

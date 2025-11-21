@@ -56,7 +56,11 @@ const Hero = () => {
             color: '#555',
           }}
         >
-          An N8N Verified Creator & AI Automation Specialist and Full Stack Developer with a foundation in TypeScript and JavaScript. I excel at solving complex business problems by leveraging low-code automation and AI integration (e.g., Google Gemini API workflows). With a perfect GPA from Business College Helsinki , my experience in full-stack development (React, Node.js, AWS, Docker) is complemented by a strong focus on QA (Cypress, Jest) and a background as a Scrum Master/Product Owner.
+          {/* UPDATE: Added "Flowgrammer" explicitly */}
+          An <strong>N8N Verified Creator</strong>, <strong>Flowgrammer</strong>, & AI Automation Specialist.
+          I am also a Full Stack Developer with a foundation in TypeScript and JavaScript.
+          I excel at solving complex business problems by leveraging low-code automation...
+          {/* ... rest of text */}
         </Typography>
       </Grid>
     </Grid >

@@ -32,7 +32,7 @@ const Banner = () => {
     return (
         <Box className={styles.banner} style={{ backgroundColor: "#2C3E50" }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <Typography variant="h2" component="h2" sx={{ color: "white" }}>
+                <Typography variant="h2" component="h1" sx={{ color: "white" }}>
                     I am Mychel Garzon
                 </Typography>
                 <Typography variant="h4" component="h4" sx={{ color: "white" }}>

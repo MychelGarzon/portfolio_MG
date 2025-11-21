@@ -9,9 +9,9 @@ const Banner = () => {
         if (element) {
             const options = {
                 strings: [
-                    "AI Automation Specialist",
                     "n8n Expert",
                     "Flowgrammer",
+                    "AI Automation Specialist",
                     "Full Stack Developer"
                 ], typeSpeed: 60,
                 backSpeed: 25,

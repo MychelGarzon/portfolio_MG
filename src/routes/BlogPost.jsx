@@ -2,6 +2,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { Typography, Container, Box, Button, Chip, Paper } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Helmet } from 'react-helmet-async';
 import blogData from '../data/blogData';
 
 const BlogPost = () => {
@@ -17,9 +18,32 @@ const BlogPost = () => {
             </Container>
         );
     }
-
+    const blogSchema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.title,
+        "image": post.image,
+        "author": {
+            "@type": "Person",
+            "name": "Mychel Garzon"
+        },
+        "datePublished": post.date // Ensure your data has a date field if possible
+    };
     return (
         <Box sx={{ minHeight: '80vh', display: 'flex', flexDirection: 'column', backgroundColor: '#f9f9f9' }}>
+            <Helmet>
+                <title>{`${post.title} | Mychel Garzon Tech Blog`}</title>
+                <meta name="description" content={post.content.substring(0, 150) + "..."} />
+
+                {/* Open Graph Tags */}
+                <meta property="og:title" content={post.title} />
+                <meta property="og:type" content="article" />
+                <meta property="og:image" content={post.image} />
+
+                <script type="application/ld+json">
+                    {JSON.stringify(blogSchema)}
+                </script>
+            </Helmet>
             <Container maxWidth="md" sx={{ marginTop: '8rem', marginBottom: '4rem', flex: '1' }}>
                 <Button
                     startIcon={<ArrowBackIcon />}

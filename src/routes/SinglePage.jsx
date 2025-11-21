@@ -1,7 +1,7 @@
-import { useParams, Link } from 'react-router-dom'; // SEO: Use Link for internal navigation
+import { useParams, Link } from 'react-router-dom'; // SEO FIX: Import Link for crawler-friendly navigation
 import { Typography, CardContent, Grid, Container, Box, Button } from '@mui/material';
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
-import { Helmet } from 'react-helmet-async'; // SEO: Import Helmet for dynamic metadata
+import { Helmet } from 'react-helmet-async'; // SEO FIX: Import Helmet for dynamic head tags
 
 import projectsData from '../data/projectsData';
 import technologiesData from '../data/technologies';
@@ -14,18 +14,20 @@ const ProjectDetail = () => {
         return <Typography variant="h6">Project not found!</Typography>;
     }
 
-    // SEO: Construct dynamic schema for this specific project
+    // SEO FIX: Construct Schema.org JSON-LD for SoftwareApplication
+    // This helps Google understand this page represents a specific piece of software.
     const projectSchema = {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": project.name,
-        "description": project.specificDescription,
         "applicationCategory": project.category,
-        "operatingSystem": "Web"
+        "operatingSystem": "Web",
+        "description": project.description,
+        "url": window.location.href
     };
 
     return (
-        // SEO: Use <article> for standalone content
+        // SEO FIX: Use <article> semantics so crawlers know this is the main content
         <Box
             component="article"
             sx={{
@@ -35,17 +37,18 @@ const ProjectDetail = () => {
                 justifyContent: 'space-between'
             }}
         >
-            {/* 🛑 SEO CRITICAL: Inject unique metadata for this route */}
+            {/* 🛑 SEO CRITICAL: Inject unique title and meta description for this specific project */}
             <Helmet>
-                <title>{`${project.name} | Project by Mychel Garzon`}</title>
+                <title>{`${project.name} - Portfolio Project | Mychel Garzon`}</title>
                 <meta name="description" content={project.specificDescription.substring(0, 160)} />
 
-                {/* Open Graph for Social Sharing */}
+                {/* Open Graph for Social Sharing (LinkedIn/Twitter previews) */}
                 <meta property="og:title" content={project.name} />
                 <meta property="og:description" content={project.description} />
                 <meta property="og:image" content={project.image} />
+                <meta property="og:type" content="article" />
 
-                {/* Structured Data */}
+                {/* Structured Data Injection */}
                 <script type="application/ld+json">
                     {JSON.stringify(projectSchema)}
                 </script>
@@ -56,24 +59,24 @@ const ProjectDetail = () => {
                     <Grid item xs={12} md={6}>
                         <Box
                             component="img"
-                            alt={`Screenshot of ${project.name} application`} // SEO: Descriptive Alt Text
+                            alt={`Screenshot of ${project.name} application`} // SEO FIX: Descriptive Alt Text
                             src={project.image}
-                            // SEO: Explicit dimensions (aspect ratio) prevents CLS
-                            // Optimization: In a real scenario, use a <picture> tag with WebP source here
+                            // SEO FIX: Aspect ratio prevents layout shift (CLS) before image loads
                             sx={{
                                 height: '400px',
                                 width: '100%',
                                 objectFit: 'cover',
                                 borderRadius: '8px',
                                 boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
+                                aspectRatio: '16/9'
                             }}
                         />
                     </Grid>
 
                     <Grid item xs={12} md={6}>
                         <CardContent>
-                            {/* SEO: H1 matches the Title tag. Excellent for relevance. */}
-                            <Typography variant="h1" component="h1" sx={{ marginBottom: '20px', fontSize: '2.5rem' }}>
+                            {/* SEO FIX: Use H1 for the page title. Essential for relevance. */}
+                            <Typography variant="h1" sx={{ marginBottom: '20px', fontSize: '2.5rem', fontWeight: 'bold' }}>
                                 {project.name}
                             </Typography>
 
@@ -105,8 +108,8 @@ const ProjectDetail = () => {
                                 })}
                             </Grid>
                             <Box>
-                                {/* SEO: Replaced window.history.back() with React Router Link. 
-                                    This ensures internal link juice flows back to the parent page. */}
+                                {/* SEO FIX: Replaced window.history.back() with Link. 
+                                    Keeps user on site if they land here from search. */}
                                 <Button
                                     component={Link}
                                     to="/projects"
@@ -124,17 +127,20 @@ const ProjectDetail = () => {
                                     }}>
                                     Back to Projects
                                 </Button>
+
+                                {/* SEO FIX: Standard anchor tag for external links is correct here */}
                                 <Button
                                     href={project.link}
                                     target="_blank"
-                                    rel="noopener noreferrer" // Security best practice
+                                    rel="noopener noreferrer"
                                     sx={{
-                                        // ... existing styles
                                         backgroundColor: 'transparent',
+                                        '&:hover': { backgroundColor: 'transparent' },
+                                        textDecoration: 'none',
                                     }}
                                 >
                                     <Typography
-                                        component="span" // Changed from <a> to <span> to avoid nested <a> tags if Button is an <a>
+                                        component="span"
                                         sx={{
                                             display: 'flex',
                                             alignItems: 'center',

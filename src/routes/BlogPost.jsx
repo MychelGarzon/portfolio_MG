@@ -19,11 +19,40 @@ const RenderParagraph = ({ text }) => {
                 mb: 2.5,
             }}
         >
-            {parts.map((part, i) =>
-                i % 2 === 1
-                    ? <strong key={`bold-${i}`} style={{ color: '#2C3E50', fontWeight: 700 }}>{part}</strong>
-                    : <span key={`text-${i}`}>{part}</span>
-            )}
+            {parts.map((part, i) => {
+                // Bold text
+                if (i % 2 === 1) {
+                    return (
+                        <strong key={`bold-${i}`} style={{ color: '#2C3E50', fontWeight: 700 }}>
+                            {part}
+                        </strong>
+                    );
+                }
+                // URL detection inside plain text parts
+                const urlRegex = /(https?:\/\/[^\s]+)/g;
+                const subParts = part.split(urlRegex);
+                return subParts.map((subPart, j) =>
+                    urlRegex.test(subPart) ? (
+                        // FIX: Corrected the malformed anchor tag syntax
+                        <a
+                            key={`link-${i}-${j}`}
+                            href={subPart}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                color: '#2C3E50',
+                                fontWeight: 600,
+                                textDecoration: 'underline',
+                                wordBreak: 'break-all',
+                            }}
+                        >
+                            {subPart}
+                        </a>
+                    ) : (
+                        <span key={`text-${i}-${j}`}>{subPart}</span>
+                    )
+                );
+            })}
         </Typography>
     );
 };
@@ -71,7 +100,11 @@ const RenderContent = ({ content }) => {
                 // List item detection: starts with emoji
                 const startsWithEmoji = (str) => /^\p{Emoji}/u.test(str) && !/^[0-9#*]/u.test(str);
                 if (startsWithEmoji(trimmed)) {
-                    const parts = trimmed.split(/\*\*(.*?)\*\*/g);
+                    // FIX: Safely extract the emoji and parse the remaining string so text isn't lost
+                    const emoji = [...trimmed][0];
+                    const textWithoutEmoji = trimmed.substring(emoji.length);
+                    const parts = textWithoutEmoji.split(/\*\*(.*?)\*\*/g);
+
                     return (
                         <Box
                             key={i}
@@ -86,11 +119,11 @@ const RenderContent = ({ content }) => {
                             }}
                         >
                             <Typography sx={{ fontSize: '1.3rem', flexShrink: 0, mt: 0.1 }}>
-                                {[...trimmed][0]}
+                                {emoji}
                             </Typography>
                             <Typography variant="body1" sx={{ fontSize: '1rem', lineHeight: 1.8, color: '#444' }}>
-                                {parts.slice(1).map((part, j) =>
-                                    j % 2 === 0
+                                {parts.map((part, j) =>
+                                    j % 2 === 1
                                         ? <strong key={j} style={{ color: '#2C3E50', fontWeight: 700 }}>{part}</strong>
                                         : part
                                 )}

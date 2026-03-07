@@ -1,9 +1,10 @@
-// src/routes/BlogPost.jsx
+import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Typography, Container, Box, Button, Chip, Paper } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import blogData from '../data/blogData';
 import PropTypes from 'prop-types';
+import EndorsementCard from '../components/EndorsementCard';
 
 // 1. Renders a single paragraph — handles **bold** inline
 const RenderParagraph = ({ text }) => {
@@ -36,7 +37,7 @@ const RenderContent = ({ content }) => {
             {blocks.map((block, i) => {
                 const trimmed = block.trim();
 
-                // Heading: starts and ends with **
+                // Heading detection: starts and ends with **
                 if (trimmed.startsWith('**') && trimmed.endsWith('**') && trimmed.split('**').length === 3) {
                     const heading = trimmed.replace(/\*\*/g, '');
                     return (
@@ -67,7 +68,7 @@ const RenderContent = ({ content }) => {
                     );
                 }
 
-                // List item: starts with emoji + **label**
+                // List item detection: starts with emoji
                 const startsWithEmoji = (str) => /^\p{Emoji}/u.test(str) && !/^[0-9#*]/u.test(str);
                 if (startsWithEmoji(trimmed)) {
                     const parts = trimmed.split(/\*\*(.*?)\*\*/g);
@@ -98,27 +99,26 @@ const RenderContent = ({ content }) => {
                     );
                 }
 
-                // Regular paragraph
                 return <RenderParagraph key={i} text={trimmed} />;
             })}
         </Box>
     );
 };
 
-// 3. Define propTypes after the components are initialized
-RenderParagraph.propTypes = {
-    text: PropTypes.string.isRequired,
-};
+RenderParagraph.propTypes = { text: PropTypes.string.isRequired };
+RenderContent.propTypes = { content: PropTypes.string.isRequired };
 
-RenderContent.propTypes = {
-    content: PropTypes.string.isRequired,
-};
-
-// 4. Main BlogPost Component
+// 3. Main BlogPost Component
 const BlogPost = () => {
+    // Matches the :blogId parameter in your Route
     const { blogId } = useParams();
     const navigate = useNavigate();
     const post = blogId ? blogData.find((p) => p.id === parseInt(blogId)) : undefined;
+
+    // SCROLL FIX: Jumps to top when an article is opened
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [blogId]);
 
     if (!post) {
         return (
@@ -196,15 +196,6 @@ const BlogPost = () => {
                         </Typography>
                     </Box>
 
-                    {/* Accent line */}
-                    <Box sx={{
-                        width: 48,
-                        height: 3,
-                        background: '#2C3E50',
-                        borderRadius: 2,
-                        mb: 4,
-                    }} />
-
                     {/* Cover image */}
                     <Box
                         component="img"
@@ -216,13 +207,18 @@ const BlogPost = () => {
                             maxHeight: '400px',
                             objectFit: 'cover',
                             borderRadius: '12px',
-                            mb: 6,
+                            mb: 4,
                             boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
                         }}
                     />
 
-                    {/* Content */}
-                    <RenderContent content={post.content} />
+                    {/* DYNAMIC ENDORSEMENT SECTION */}
+                    <EndorsementCard blog={post} />
+
+                    {/* Article Content */}
+                    <Box sx={{ mt: 4 }}>
+                        <RenderContent content={post.content} />
+                    </Box>
 
                 </Paper>
             </Container>

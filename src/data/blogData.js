@@ -53,9 +53,16 @@ const blogData = [
         excerpt: "Built entirely in n8n, SwipeWise is a multi-tool agentic workflow designed to deliver real-time financial awareness to young users—right where they make decisions: online.",
         content: "At Junction 2025, I set out to prove that automation can do more than just connect apps—it can teach, guide, and empower. The result? SwipeWise: a fully agentic financial literacy system built entirely in n8n.\n\n**The Mission: Financial Awareness in Real Time**\nSwipeWise targets young users in the moment they need it most—while browsing, shopping, or encountering ads. Using a single unified webhook, the system orchestrates three intelligent tools:\n\n🧠 **Page Classifier**\nCombines deterministic rules with LLM-powered classification to detect shopping pages, checkout flows, and ads. Outputs clean JSON signals for behavioral nudges.\n\n💳 **Offer Analyzer**\nEvaluates pay-later offers, subscriptions, and credit terms with structured logic, fallback handling, and normalization. Delivers consistent, educational insights.\n\n🎨 **Ad Visual Generator**\nTransforms ad payloads into safe, brand-friendly DALL·E prompts. Outputs high-contrast hero visuals focused on objects—not manipulation.\n\n🃏 **SwipeWise Deal Card**\nA dedicated HTML endpoint renders the offer analysis into a responsive card, viewable directly from the browser extension.\n\n🧪 **Eval Harness**\nFive reproducible scenarios—checkout, news, homepage, risky offer, malformed input—run entirely inside n8n. Outputs include total tests, pass/fail counts, and reliability metrics.\n\n**Why n8n?**\nSwipeWise wouldn’t be possible in a linear automation tool. n8n’s node-based architecture allowed me to build a true agent: one that routes, validates, and adapts in real time. The Brain node and Switch logic handle complex decision trees, while internal LLM validations ensure safety and consistency.\n\n**Hackathon Win: Junction 2025**\nSwipeWise took home the win at Junction for its originality, technical depth, and social impact.",
         date: "November 20, 2025",
-        image: hackaton,
+        image: hackaton, // Ensure this import is correct at the top of your file
         tags: ["n8n", "Agentic Automation", "Financial Literacy", "Hackathon Winner"],
-        readTime: "6 min read"
+        readTime: "6 min read",
+        // New Official Endorsement Field
+        officialEndorsement: {
+            provider: "n8n.io Official",
+            link: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7396808509817778178/",
+            statement: "n8n challenged hackers to build a useful end-to-end agentic workflow with multiple integrations... Big congrats to our winners, Yevhenii Kalashnyk, Mychel Garzon Trujillo and Arttu Sundell, and thanks to everyone who joined.",
+            badge: "Challenge Winner @ Junction 2025"
+        }
     },
     {
 

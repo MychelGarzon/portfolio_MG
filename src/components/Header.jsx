@@ -80,12 +80,7 @@ const Header = () => {
                     }}>
                         <Typography variant="h6">Blog</Typography>
                     </Button>
-                    <Button component={Link} to="/skills" color="inherit" sx={{
-                        display: { xs: 'none', md: 'inline-flex' },
-                        '&:hover': { backgroundColor: 'transparent' }
-                    }}>
-                        <Typography variant="h6">Skills</Typography>
-                    </Button>
+
 
                     <Button component={Link} to="/contact" color="inherit" sx={{
                         display: { xs: 'none', md: 'inline-flex' },

@@ -5,7 +5,6 @@ import Home from './routes/Home';
 import ProjectDetail from './routes/SinglePage';
 import Projects from './routes/Projects';
 import ContactPage from './routes/ContactPage';
-import SkillsPage from './routes/SkillsPage';
 import WorkflowsPage from './routes/WorkflowsPage';
 import BlogPage from './routes/BlogPage';
 import BlogPost from './routes/BlogPost';
@@ -45,11 +44,7 @@ const router = createBrowserRouter([
         element: <Projects />,
         errorElement: <ErrorPage />
       },
-      {
-        path: '/skills',
-        element: <SkillsPage />,
-        errorElement: <ErrorPage />
-      },
+
       {
         path: '/projects/:projectId',
         element: <ProjectDetail />,

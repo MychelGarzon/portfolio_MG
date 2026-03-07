@@ -5,14 +5,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import blogData from '../data/blogData';
 import PropTypes from 'prop-types';
 
-RenderParagraph.propTypes = {
-    text: PropTypes.string.isRequired,
-};
-
-RenderContent.propTypes = {
-    content: PropTypes.string.isRequired,
-};
-// Renders a single paragraph — handles **bold** inline
+// 1. Renders a single paragraph — handles **bold** inline
 const RenderParagraph = ({ text }) => {
     const parts = text.split(/\*\*(.*?)\*\*/g);
     return (
@@ -34,7 +27,7 @@ const RenderParagraph = ({ text }) => {
     );
 };
 
-// Main content renderer — splits by \n\n and detects headings
+// 2. Main content renderer — splits by \n\n and detects headings
 const RenderContent = ({ content }) => {
     const blocks = content.split('\n\n').filter(Boolean);
 
@@ -112,6 +105,16 @@ const RenderContent = ({ content }) => {
     );
 };
 
+// 3. Define propTypes after the components are initialized
+RenderParagraph.propTypes = {
+    text: PropTypes.string.isRequired,
+};
+
+RenderContent.propTypes = {
+    content: PropTypes.string.isRequired,
+};
+
+// 4. Main BlogPost Component
 const BlogPost = () => {
     const { blogId } = useParams();
     const navigate = useNavigate();

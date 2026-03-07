@@ -1,4 +1,4 @@
-import { Grid, Typography, CardMedia, Box } from '@mui/material';
+import { Grid, Typography, CardMedia, Box, Chip } from '@mui/material';
 import photo from "../assets/ownPhoto.jpeg";
 
 const Hero = () => {
@@ -95,58 +95,53 @@ const Hero = () => {
           alignSelf: { xs: 'center', md: 'flex-start' }
         }} />
 
-        <Typography
-          variant="body1"
-          sx={{
-            color: '#444',
-            lineHeight: 1.9,
-            fontSize: '0.97rem',
-            maxWidth: 560,
-          }}
-        >
-          {"I build automation systems that actually run in production. I'm an "}
-          <strong style={{ color: '#ea580c' }}>n8n Verified Creator</strong>
-          {" and "}
-          <strong style={{ color: '#a16207' }}>Junction 2025 n8n Tech Challenge Winner</strong>
-          {" \u2014 Europe's largest hackathon. I specialize in "}
-          <strong>AI-powered workflow automation</strong>
-          {", LLM integration, and full stack development using "}
-          <strong>TypeScript</strong>
-          {", "}
-          <strong>Node.js</strong>
-          {", and "}
-          <strong>React</strong>
-          {"."}
-        </Typography>
+        <Box sx={{ maxWidth: 600, position: 'relative', pl: 3, borderLeft: '2px solid #e5e7eb' }}>
+          {/* The "Big Wins" Row */}
+          <Box sx={{ mb: 3 }}>
+            <Typography
+              variant="body1"
+              sx={{
+                color: '#111',
+                fontWeight: 600,
+                fontSize: '1.05rem',
+                mb: 1,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1
+              }}
+            >
+              <span style={{ color: '#ea580c' }}>n8n Verified Creator</span>
+              <span style={{ color: '#94a3b8', fontWeight: 400 }}>&</span>
+              <span style={{ color: '#a16207' }}>Junction n8n Tech Challenge 2025 Winner</span>
+            </Typography>
+            <Typography variant="body2" sx={{ color: '#666', lineHeight: 1.6 }}>
+              Specializing in <strong>AI-powered agentic workflows</strong> and production-grade Gemini API pipelines.
+            </Typography>
+          </Box>
 
-        <Typography
-          variant="body1"
-          sx={{
-            color: '#444',
-            lineHeight: 1.9,
-            fontSize: '0.97rem',
-            maxWidth: 560,
-            mt: 2,
-          }}
-        >
-          {"My work includes production "}
-          <strong>Gemini API pipelines</strong>
-          {", agentic n8n workflows, and scalable web applications on AWS with CI/CD, Docker, Cypress, and Jest. I've led a 6-person Agile team as Scrum Master and hold a Full Stack Development qualification from "}
-          <strong>Business College Helsinki</strong>
-          {" with a 5.0/5.0 GPA."}
-        </Typography>
+          {/* The Technical Core */}
+          <Box sx={{ mb: 3 }}>
+            <Typography variant="body1" sx={{ color: '#444', lineHeight: 1.7, fontSize: '0.95rem' }}>
+              Full-stack developer architecting scalable apps with <strong>TypeScript, Node.js, and React</strong>.
+              Expertise in <strong>AWS, Docker, and CI/CD</strong> with a 5.0/5.0 GPA from Business College Helsinki.
+            </Typography>
+          </Box>
 
-        <Typography
-          variant="body2"
-          sx={{
-            color: '#888',
-            mt: 2.5,
-            fontSize: '0.85rem',
-            letterSpacing: 0.3,
-          }}
-        >
-          Available for automation consulting and full stack roles — hybrid or remote.
-        </Typography>
+          {/* Status Footer */}
+          <Chip
+            label="Available for Automation Consulting & Full Stack Roles"
+            size="small"
+            variant="outlined"
+            sx={{
+              borderRadius: '6px',
+              fontSize: '0.75rem',
+              fontWeight: 600,
+              color: '#1e293b',
+              borderColor: '#e2e8f0',
+              bgcolor: '#f8fafc'
+            }}
+          />
+        </Box>
 
       </Grid>
     </Grid>

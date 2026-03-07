@@ -159,22 +159,7 @@ const ContactPage = () => {
                             </ListItem>
 
                             {/* Facebook Button */}
-                            <ListItem>
-                                <StyledButton onClick={() => handleNavigation("https://www.facebook.com/michel.garzontrujillo")}>
-                                    <Typography
-                                        variant="h6"
-                                        color="black"
-                                        sx={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: 0.5,
-                                            textDecoration: 'none',
-                                        }}
-                                    >
-                                        Facebook <ArrowOutwardIcon fontSize="large" />
-                                    </Typography>
-                                </StyledButton>
-                            </ListItem>
+
                         </List>
                     </Grid>
 

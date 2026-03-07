@@ -1,79 +1,141 @@
 import PropTypes from 'prop-types';
-import { Grid, Card, CardContent, Typography, Box } from '@mui/material';
+import { Grid, Typography, Box } from '@mui/material';
 import skillsData from '../data/skillsData';
+
+const CARD_ACCENTS = ['#ff600a', '#2563eb', '#16a34a', '#7c3aed'];
 
 const Skills = () => {
     return (
-        <>
-            <Typography variant="h2" component="h2" sx={{ marginBottom: 2, textAlign: 'center' }}>
-                Skills
-            </Typography>
-            <Grid container justifyContent="center">
+        <Box
+            component="section"
+            sx={{
+                background: '#f8f8f8',
+                py: 10,
+                px: { xs: 3, md: 8 },
+            }}
+        >
+            {/* Header */}
+            <Box sx={{ textAlign: 'center', mb: 8 }}>
                 <Typography
-                    variant="body1"
-                    component="p"
+                    variant="h2"
+                    component="h2"
                     sx={{
-                        textAlign: 'center',
-                        margin: '16px',
-                        maxWidth: '600px',
-                        color: '#555',
+                        fontSize: { xs: '2rem', md: '2.8rem' },
+                        fontWeight: 300,
+                        letterSpacing: '-0.02em',
+                        color: '#111',
+                        mb: 1,
                     }}
                 >
-                    As a Full Stack Developer, I thrive on the challenge of blending creativity and logic, building seamless user experiences while mastering the intricate backend mechanics, and I am eager to keep learning and pushing my limits in this dynamic field.
+                    Skills
                 </Typography>
-            </Grid>
-            <Grid container spacing={4} style={{ padding: '50px' }}>
+                <Box sx={{
+                    width: 48,
+                    height: 3,
+                    background: '#ea580c',
+                    borderRadius: 2,
+                    mx: 'auto',
+                    mb: 3,
+                }} />
+                <Typography
+                    variant="body1"
+                    sx={{
+                        color: '#777',
+                        maxWidth: 520,
+                        mx: 'auto',
+                        lineHeight: 1.8,
+                        fontSize: '0.95rem',
+                    }}
+                >
+                    Building production systems at the intersection of AI, automation, and full stack engineering.
+                </Typography>
+            </Box>
+
+            {/* Cards */}
+            <Grid container spacing={3} justifyContent="center">
                 {skillsData.map((info, index) => (
                     <Grid item xs={12} sm={6} md={3} key={index}>
-                        {/* Inline Infobox Component */}
-                        <Card
-                            elevation={3}
+                        <Box
                             sx={{
-                                transition: 'transform 0.3s',
-                                '&:hover': {
-                                    transform: 'scale(1.05)',
-                                },
+                                background: '#fff',
+                                borderRadius: '12px',
+                                overflow: 'hidden',
+                                height: '100%',
                                 display: 'flex',
                                 flexDirection: 'column',
-                                height: '100%',
+                                boxShadow: '0 2px 20px rgba(0,0,0,0.06)',
+                                transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+                                '&:hover': {
+                                    transform: 'translateY(-4px)',
+                                    boxShadow: '0 8px 40px rgba(0,0,0,0.12)',
+                                },
                             }}
                         >
-                            <CardContent
-                                sx={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    height: '100%',
-                                }}
-                            >
-                                <Box
-                                    sx={{
+                            {/* Colored top border */}
+                            <Box sx={{
+                                height: 4,
+                                background: CARD_ACCENTS[index],
+                                width: '100%',
+                            }} />
+
+                            <Box sx={{ p: 3, display: 'flex', flexDirection: 'column', flex: 1 }}>
+                                {/* Icon */}
+                                <Box sx={{ mb: 2.5 }}>
+                                    <Box sx={{
+                                        width: 48,
+                                        height: 48,
+                                        borderRadius: '10px',
+                                        background: CARD_ACCENTS[index] + '15',
                                         display: 'flex',
+                                        alignItems: 'center',
                                         justifyContent: 'center',
-                                        mb: 2,
+                                    }}>
+                                        <img
+                                            src={info.image}
+                                            alt={info.title}
+                                            style={{
+                                                width: 28,
+                                                height: 28,
+                                                objectFit: 'contain',
+                                                opacity: 0.85,
+                                            }}
+                                        />
+                                    </Box>
+                                </Box>
+
+                                {/* Title */}
+                                <Typography
+                                    variant="h6"
+                                    component="h3"
+                                    sx={{
+                                        fontWeight: 700,
+                                        fontSize: '0.95rem',
+                                        color: '#111',
+                                        mb: 1.5,
+                                        lineHeight: 1.3,
                                     }}
                                 >
-                                    <img
-                                        src={info.image}
-                                        alt={info.title}
-                                        style={{
-                                            width: '40%',
-                                            height: 'auto',
-                                            objectFit: 'contain',
-                                        }}
-                                    />
-                                </Box>
-                                <Typography variant="h5" component="h2" gutterBottom>
                                     {info.title}
                                 </Typography>
-                                <Typography variant="body2" color="textSecondary">
+
+                                {/* Description */}
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        color: '#777',
+                                        lineHeight: 1.75,
+                                        fontSize: '0.85rem',
+                                        flex: 1,
+                                    }}
+                                >
                                     {info.description}
                                 </Typography>
-                            </CardContent>
-                        </Card>
+                            </Box>
+                        </Box>
                     </Grid>
                 ))}
             </Grid>
-        </>
+        </Box>
     );
 };
 

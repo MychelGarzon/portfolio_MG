@@ -2,9 +2,21 @@ import blog1 from '../assets/projects-images/blog1.png';
 import blog3 from '../assets/projects-images/blog3.png';
 import blog2 from '../assets/projects-images/blog2.png';
 import blog5 from '../assets/projects-images/blog5.png';
+import blog6 from '../assets/projects-images/blog6.png';
 import hackaton from '../assets/projects-images/hackaton.jpeg';
 
 const blogData = [
+    {
+        id: 6,
+        title: "How n8n Connects Google Workspace, Jira, Slack and GitHub Into One IT Operations Engine",
+        excerpt: "IT shouldn't feel like a never-ending game of 'copy-paste'. Here is how I use n8n to turn a messy stack of tools into a single, reliable operations engine.",
+        content: "We’ve all been there: A new hire starts Monday, and you spend your Sunday night bouncing between **Google Workspace**, **Jira**, **Slack**, and **GitHub**. It’s not just boring—it’s dangerous. One missed click in GitHub or a forgotten Slack invite, and the 'Day 1' experience is ruined. In a scaling company, manual work isn't just a chore; it’s a bottleneck that keeps you from doing the work that actually matters.\n\n**Building the 'Brain' Between the Apps**\nI don’t believe in just 'connecting' apps. I believe in building an engine where n8n acts as the brain. Instead of you being the bridge, n8n listens to your 'Source of Truth'. When that new user hits Google Workspace, the engine wakes up: it builds the Jira ticket, provisions the specific GitHub repos for their team, and welcomes them in Slack—all while you're focused on higher-level strategy.\n\n**The Three Rules for an Automation That Actually Works:**\n\n**1. Jira is your Paper Trail**\nAutomation shouldn't be a 'black box'. I architect my flows so every step is logged back into a Jira ticket. This means when leadership asks for a compliance report, you aren't digging through logs—you’re just showing them the ticket history that n8n wrote for you.\n\n**2. Slack is your Command Center**\nNobody likes 'blind' automation. I use Slack to create 'Human-in-the-loop' checkpoints. Need to grant Admin access? n8n sends a button to the manager in Slack. They click 'Approve', and the engine handles the rest. It keeps the human in control without the manual data entry.\n\n**3. The 'Clean Exit' (Offboarding)**\nThis is where my **Verified Creator** standards kick in. Offboarding is a security race. My n8n pipelines are designed to revoke GitHub keys and suspend Google accounts in seconds, not hours. If an API is down, the system doesn't just quit—it retries until it's certain the access is gone.\n\n**The Bottom Line: Architecture Over Effort**\nBuilding these flows is easy, but making them reliable at **99.9% uptime** is an art form. It’s about planning for the 'unhappy path'—the API errors and the weird edge cases. That’s the difference between a script and an engine.\n\n**Conclusion**\nIf you're still fighting your tools, you're working for them. When you build a unified engine, the tools start working for you. It’s time to stop 'supporting' the business and start architecting it.",
+        date: "February 20, 2026",
+        image: blog6,
+        tags: ["n8n", "ITSM", "Real-World Automation", "Helsinki Tech", "IT Strategy"],
+        readTime: "8 min read"
+    },
+
     {
         id: 5,
         title: "Stop Burning Money: Why n8n is the Zapier Killer",

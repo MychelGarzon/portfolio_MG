@@ -19,6 +19,27 @@ const BlogPage = () => {
     const navigate = useNavigate();
     const [hoveredCardId, setHoveredCardId] = useState(null);
 
+    // 1. Define the specific order you want at the top
+    const featuredIds = [1, 2, 6];
+
+    // 2. Custom Sort Logic: Pins 1, 2, 6 to the front, then sorts the rest by ID descending
+    const sortedBlogs = [...blogData].sort((a, b) => {
+        const indexA = featuredIds.indexOf(a.id);
+        const indexB = featuredIds.indexOf(b.id);
+
+        // If both items are in the featured list, sort them by their position in that list (1, 2, 6)
+        if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+
+        // If only A is featured, move it to the top
+        if (indexA !== -1) return -1;
+
+        // If only B is featured, move it to the top
+        if (indexB !== -1) return 1;
+
+        // For everything else, sort by ID descending (newest first)
+        return b.id - a.id;
+    });
+
     return (
         <Container maxWidth="xl" sx={{ marginTop: '8rem', marginBottom: '6rem' }}>
 
@@ -59,9 +80,16 @@ const BlogPage = () => {
                 </Typography>
             </Box>
 
-            <Grid container spacing={4} justifyContent="center">
-                {blogData.map((blog) => (
-                    <Grid item xs={12} sm={6} md={4} key={blog.id} sx={{ display: 'flex', justifyContent: 'center' }}>
+            <Grid container spacing={4}>
+                {sortedBlogs.map((blog) => (
+                    <Grid
+                        item
+                        key={blog.id}
+                        xs={12}    // 1 card on mobile
+                        sm={6}     // 2 cards on tablet
+                        md={4}     // 3 cards on desktop (Forces 1, 2, and 6 into the first row)
+                        sx={{ display: 'flex', justifyContent: 'center' }}
+                    >
                         <Card
                             sx={{
                                 display: 'flex',
@@ -82,7 +110,7 @@ const BlogPage = () => {
                             onMouseEnter={() => setHoveredCardId(blog.id)}
                             onMouseLeave={() => setHoveredCardId(null)}
                         >
-                            {/* Top accent line — color per card */}
+                            {/* Top accent line */}
                             <Box sx={{
                                 height: 3,
                                 background: '#2C3E50',
@@ -90,105 +118,51 @@ const BlogPage = () => {
                                 flexShrink: 0,
                             }} />
 
-                            {/* Image */}
                             <CardMedia
                                 component="img"
-                                sx={{
-                                    height: 200,
-                                    width: '100%',
-                                    objectFit: 'cover',
-                                }}
+                                sx={{ height: 200, width: '100%', objectFit: 'cover' }}
                                 image={blog.image}
                                 alt={blog.title}
                             />
 
-                            <CardContent sx={{
-                                flexGrow: 1,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                p: 3,
-                            }}>
-
-                                {/* Meta row */}
-                                <Box sx={{
-                                    mb: 2,
-                                    display: 'flex',
-                                    justifyContent: 'space-between',
-                                    alignItems: 'center',
-                                }}>
-                                    <Typography variant="caption" sx={{
-                                        color: '#999',
-                                        fontSize: '0.78rem',
-                                        fontWeight: 500,
-                                        letterSpacing: 0.3,
-                                    }}>
+                            <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', p: 3 }}>
+                                <Box sx={{ mb: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <Typography variant="caption" sx={{ color: '#999', fontSize: '0.78rem', fontWeight: 500 }}>
                                         {blog.date}
                                     </Typography>
-                                    <Typography variant="caption" sx={{
-                                        color: '#bbb',
-                                        fontSize: '0.78rem',
-                                        letterSpacing: 0.3,
-                                    }}>
+                                    <Typography variant="caption" sx={{ color: '#bbb', fontSize: '0.78rem' }}>
                                         {blog.readTime}
                                     </Typography>
                                 </Box>
 
-                                {/* Title */}
                                 <Typography
                                     variant="h6"
                                     component="h2"
-                                    sx={{
-                                        mb: 1.5,
-                                        fontWeight: 700,
-                                        lineHeight: 1.35,
-                                        fontSize: '1.05rem',
-                                        color: '#111',
-                                        letterSpacing: '-0.01em',
-                                    }}
+                                    sx={{ mb: 1.5, fontWeight: 700, lineHeight: 1.35, fontSize: '1.05rem', color: '#111' }}
                                 >
                                     {blog.title}
                                 </Typography>
 
-                                {/* Excerpt */}
                                 <Typography
                                     variant="body2"
-                                    sx={{
-                                        mb: 3,
-                                        flexGrow: 1,
-                                        color: '#666',
-                                        lineHeight: 1.75,
-                                        fontSize: '0.875rem',
-                                    }}
+                                    sx={{ mb: 3, flexGrow: 1, color: '#666', lineHeight: 1.75, fontSize: '0.875rem' }}
                                 >
                                     {blog.excerpt}
                                 </Typography>
 
-                                {/* Tags */}
                                 <Box sx={{ mb: 3, display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                                     {blog.tags.map((tag, index) => (
                                         <Chip
                                             key={index}
                                             label={tag}
                                             size="small"
-                                            sx={{
-                                                backgroundColor: '#eef2f5',
-                                                color: '#2C3E50',
-                                                fontWeight: 600,
-                                                fontSize: '0.7rem',
-                                                borderRadius: '6px',
-                                                height: '22px',
-                                                letterSpacing: 0.3,
-                                                '& .MuiChip-label': {
-                                                    px: '8px',
-                                                }
-                                            }}
+                                            sx={{ backgroundColor: '#eef2f5', color: '#2C3E50', fontWeight: 600, fontSize: '0.7rem', borderRadius: '6px' }}
                                         />
                                     ))}
                                 </Box>
 
                                 <Divider sx={{ opacity: 0.4, mb: 2 }} />
 
-                                {/* Read button */}
                                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                                     <Button
                                         onClick={() => navigate(`/blog/${blog.id}`)}
@@ -199,26 +173,13 @@ const BlogPage = () => {
                                             fontWeight: 600,
                                             fontSize: '0.875rem',
                                             padding: 0,
-                                            minWidth: 0,
-                                            letterSpacing: 0.2,
-                                            '&:hover': {
-                                                backgroundColor: 'transparent',
-                                                color: '#000',
-                                                '& .MuiSvgIcon-root': {
-                                                    transform: 'translate(2px, -2px)',
-                                                }
-                                            }
+                                            '&:hover': { background: 'transparent', color: '#000' }
                                         }}
                                     >
                                         Read Article
-                                        <ArrowOutwardIcon sx={{
-                                            ml: 0.5,
-                                            fontSize: '0.9rem',
-                                            transition: 'transform 0.2s ease',
-                                        }} />
+                                        <ArrowOutwardIcon sx={{ ml: 0.5, fontSize: '0.9rem' }} />
                                     </Button>
                                 </Box>
-
                             </CardContent>
                         </Card>
                     </Grid>

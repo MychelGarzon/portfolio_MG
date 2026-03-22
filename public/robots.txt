@@ -4,4 +4,4 @@ Allow: /blog
 Allow: /blog/
 Disallow: /404
 
-Sitemap: https://mychelgarzon.netlify.app/sitemap.xml
+Sitemap: https://mychelgarzon.com/sitemap.xml

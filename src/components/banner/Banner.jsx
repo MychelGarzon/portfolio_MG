@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { Box, Typography, Button, Link } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import Typed from "typed.js";
 import styles from "./banner.module.css";
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     useEffect(() => {
@@ -62,7 +63,7 @@ const Banner = () => {
                         }
                     }}
                 >
-                    View My Automations →
+                    View My Workflows →
                 </Button>
 
             </Box>

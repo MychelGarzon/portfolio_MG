@@ -125,11 +125,15 @@ const AutomationPage = () => {
         <Box
             sx={{
                 paddingTop: '160px',
-                paddingBottom: '160px',
+                paddingBottom: '80px', // Adds breathing room above the footer
                 backgroundColor: '#f9f9f9',
                 color: '#686868',
                 width: '100%',
-                minHeight: '100vh',
+
+                // THE FIX: Remove minHeight: '100vh' and add these three lines:
+                flexGrow: 1,
+                display: 'flex',
+                flexDirection: 'column',
             }}
         >
             {/* Enhanced SEO & Meta Tags */}

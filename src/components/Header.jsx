@@ -106,7 +106,7 @@ const Header = () => {
                                 <CloseIcon />
                             </IconButton>
                         </div>
-                        <MenuItem onClick={handleMenuClose} component={Link} to="/workflows">
+                        <MenuItem onClick={handleMenuClose} component={Link} to="/automation">
                             WorkFlows
                         </MenuItem>
                         <MenuItem onClick={handleMenuClose} component={Link} to="/blog">
@@ -114,9 +114,6 @@ const Header = () => {
                         </MenuItem>
                         <MenuItem onClick={handleMenuClose} component={Link} to="/projects">
                             Projects
-                        </MenuItem>
-                        <MenuItem onClick={handleMenuClose} component={Link} to="/skills">
-                            Skills
                         </MenuItem>
                         <MenuItem onClick={handleMenuClose} component={Link} to="/contact">
                             Contact

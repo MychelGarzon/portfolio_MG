@@ -108,6 +108,7 @@ const ContactPage = () => {
                 backgroundColor: '#f9f9f9',
                 color: '#686868',
                 width: '100%',
+
             }}
         >
             <Container maxWidth="lg">
@@ -158,8 +159,43 @@ const ContactPage = () => {
                                 </StyledButton>
                             </ListItem>
 
-                            {/* Facebook Button */}
+                            {/* n8n */}
 
+                            <ListItem>
+                                <StyledButton onClick={() => handleNavigation("https://n8n.partnerlinks.io/mychel-garzon")}>
+                                    <Typography
+                                        variant="h6"
+                                        color="black"
+                                        sx={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: 0.5,
+                                            textDecoration: 'none',
+                                        }}
+                                    >
+                                        n8n <ArrowOutwardIcon fontSize="large" />
+                                    </Typography>
+                                </StyledButton>
+                            </ListItem>
+
+                            {/* dev.to */}
+
+                            <ListItem>
+                                <StyledButton onClick={() => handleNavigation("https://dev.to/mychelgarzon")}>
+                                    <Typography
+                                        variant="h6"
+                                        color="black"
+                                        sx={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: 0.5,
+                                            textDecoration: 'none',
+                                        }}
+                                    >
+                                        dev.to <ArrowOutwardIcon fontSize="large" />
+                                    </Typography>
+                                </StyledButton>
+                            </ListItem>
                         </List>
                     </Grid>
 

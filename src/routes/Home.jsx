@@ -13,8 +13,11 @@ const Home = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100vh',
+        width: '100%',
+
+        // THE FIXES:
+        flexGrow: 1, // Stretches the page perfectly to the footer
+        backgroundColor: '#f9f9f9', // Applies your background color behind the margins to eliminate white stripes
       }}
     >
       <Box
@@ -63,6 +66,7 @@ const Home = () => {
           width: '80%',
         }}
       />
+
       <Box
         sx={{
           textAlign: 'center',
@@ -71,8 +75,6 @@ const Home = () => {
         }}
       >
       </Box>
-
-
 
       <RecentBlogs />
 
@@ -85,6 +87,7 @@ const Home = () => {
           width: '80%',
         }}
       />
+
       <Contact />
     </Box>
   );

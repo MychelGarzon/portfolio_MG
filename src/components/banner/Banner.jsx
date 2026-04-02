@@ -44,7 +44,7 @@ const Banner = () => {
                     variant="outlined"
                     sx={{
                         mt: 4,
-                        color: '#1abc9c', // Your teal color
+                        color: 'white', // Your teal color
                         borderColor: '#1abc9c',
                         borderWidth: '2px', // Make the border slightly thicker for better visibility
                         textTransform: 'none',

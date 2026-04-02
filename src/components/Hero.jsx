@@ -72,7 +72,7 @@ const Hero = () => {
 
         <Typography
           variant="h2"
-          component="h2"
+          component="h1" // Tells Bing this is the main topic of the page
           sx={{
             fontSize: { xs: '2rem', md: '2.8rem' },
             fontWeight: 300,
@@ -82,7 +82,7 @@ const Hero = () => {
             lineHeight: 1.2,
           }}
         >
-          About Me
+          n8n Expert & Developer in Helsinki
         </Typography>
 
         {/* Orange accent line */}

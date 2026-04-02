@@ -39,19 +39,6 @@ const Banner = () => {
                     <span className={styles.typed}></span>
                 </Typography>
 
-                <Typography
-                    variant="body2"
-                    sx={{
-                        color: "#2C3E50",
-                        backgroundColor: "#2C3E50",
-                        userSelect: "none",
-                        fontSize: "1px",
-                        mt: 0
-                    }}
-                >
-                    Mychel Garzon n8n Verified Creator Junction 2025 n8n Tech Challenge Winner
-                    AI Automation Engineer Helsinki Finland Full Stack Developer Node.js TypeScript
-                </Typography>
 
             </Box>
         </Box>

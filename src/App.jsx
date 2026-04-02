@@ -8,6 +8,7 @@ import ContactPage from './routes/ContactPage';
 import WorkflowsPage from './routes/WorkflowsPage';
 import BlogPage from './routes/BlogPage';
 import BlogPost from './routes/BlogPost';
+import Automation from './routes/Automation';
 
 // Error component for router errors
 const ErrorPage = () => {
@@ -69,6 +70,13 @@ const router = createBrowserRouter([
         path: '/blog/:blogId',
         element: <BlogPost />,
         errorElement: <ErrorPage />
+      },
+      {
+
+        path: '/automation',
+        element: <Automation />,
+        errorElement: <ErrorPage />
+
       }
     ]
   },

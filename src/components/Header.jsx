@@ -54,17 +54,10 @@ const Header = () => {
 
                 <div style={{ display: 'flex', gap: '20px' }}>
                     {/* Links for larger screens */}
-                    <Button
-                        component="a"
-                        href="https://n8n.partnerlinks.io/mychel-garzon"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        color="inherit"
-                        sx={{
-                            display: { xs: 'none', md: 'inline-flex' },
-                            '&:hover': { backgroundColor: 'transparent' },
-                        }}
-                    >
+                    <Button component={Link} to="/automation" color="inherit" sx={{
+                        display: { xs: 'none', md: 'inline-flex' },
+                        '&:hover': { backgroundColor: 'transparent' }
+                    }}>
                         <Typography variant="h6">WorkFlows</Typography>
                     </Button>
                     <Button component={Link} to="/projects" color="inherit" sx={{
